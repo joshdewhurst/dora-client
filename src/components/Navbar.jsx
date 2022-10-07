@@ -11,6 +11,9 @@ export default function Navbar({ currentUser, handleLogout }) {
 			<Link to="/profile">
 				profile
 			</Link>
+
+			<Link to='/Home'>Home Feed</Link>
+			<Link to='/Trending'>Trending Now</Link>
 		</>
 	 )
 
