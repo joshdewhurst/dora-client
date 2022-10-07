@@ -1,4 +1,4 @@
-export default function newPost () {
+export default function NewPost () {
     return (
         <div>
             New Post Form

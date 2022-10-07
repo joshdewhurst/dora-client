@@ -13,6 +13,14 @@ import Navbar from './components/Navbar'
 import './App.css'
 import jwt_decode from 'jwt-decode'
 
+// importing pages
+import Trending from './components/pages/Trending'
+import EditPost from './components/pages/EditPost'
+import Home from './components/pages/Home'
+import NewPost from './components/pages/NewPost'
+import Media from './components/pages/Media'
+
+
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null)
@@ -72,6 +80,31 @@ function App() {
             element={currentUser ? <Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />}
           />
 
+          <Route 
+            path='/trending'
+            element={currentUser ? <Trending handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />}
+            />
+
+          <Route 
+            path='/post/edit'
+            element={currentUser ? <EditPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />}
+            />
+
+          <Route 
+            path='/home'
+            element={currentUser ? <Home handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />}
+            />
+
+          <Route 
+          // will need to change path later
+            path='/media'
+            element={currentUser ? <Media handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />}
+            />
+
+          <Route 
+            path='/post/new'
+            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />}
+            />
         </Routes>
       </div>
     </Router>
