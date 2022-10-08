@@ -14,12 +14,13 @@ import './App.css'
 import jwt_decode from 'jwt-decode'
 
 // importing pages
-import Trending from './components/pages/Trending'
+import Search from './components/pages/Search'
 import EditPost from './components/pages/EditPost'
 import Home from './components/pages/Home'
 import NewPost from './components/pages/NewPost'
 import Media from './components/pages/Media'
 import Loading from './components/pages/Loading'
+import Trending from './components/pages/Trending'
 
 
 function App() {
@@ -82,8 +83,8 @@ function App() {
           />
 
           <Route 
-            path='/trending'
-            element={currentUser ? <Trending handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : 
+            path='/search'
+            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : 
             // rendering a loading page for the time a currentUser is: null
             <Loading />}
             />
@@ -107,6 +108,11 @@ function App() {
           <Route 
             path='/post/new'
             element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            />
+
+          <Route 
+            path='/trending'
+            element={currentUser ? <Trending handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
             />
         </Routes>
       </div>

@@ -3,17 +3,16 @@ import { Link, BrowserRouter } from 'react-router-dom'
 export default function Navbar({ currentUser, handleLogout }) {
 	 const loggedIn = (
 		<>
+			
+
+			
+
+			<Link to='/home'>Home Feed</Link> { " | "}
+			<Link to='/trending'>Trending Now</Link> { " | "}
+			<Link to='/search'>Search</Link> { " | "}
 			{/* if the user is logged in... */}
-			<Link to="/">
-				<span onClick={handleLogout}>logout</span>
-			</Link>
-
-			<Link to="/profile">
-				profile
-			</Link>
-
-			<Link to='/Home'>Home Feed</Link>
-			<Link to='/Trending'>Trending Now</Link>
+			<Link to="/"> <span onClick={handleLogout}>Logout</span> </Link> { " | "}
+			<Link to="/profile">Profile</Link> { " | "}
 		</>
 	 )
 

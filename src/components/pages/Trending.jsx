@@ -2,52 +2,44 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-export default function Trending () {
-    
-    const [tracks, setTracks] = useState()
-    const [errorMessage, setErrorMessage] = useState()
-    const [search, setSearch] = useState ()
-    const [apiResponse, setApiResponse] = useState([]) 
-    const [inputValue, setInputValue] = useState('')
+export default function Trending() {
+    const [errorMessage, setErrorMessage] = useState("")
+    const [tracks, setTracks] = useState([])
 
-    useEffect(() => {
-        const getTracks = async () => {
-            try {
-                // setting the URL to search track 
-                const url = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${search}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+   useEffect(() => {
+    const getTrending = async (e) => {
 
-                // setting the search result as a constant
-                const response = await axios.get(url)
-                console.log(response.data.results.trackmatches)
-            } catch(err) {
-                console.warn(err)
+        try {
+            const url = `https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+            const response = await axios.get(url)
+            console.log(response.data.tracks.track)
+            setTracks(response.data.tracks.track)
+        } catch(err) {
+            console.warn(err)
                 if (err.response) {
                     setErrorMessage(err.response.data.message)
             }
         }
+       
     }
-    getTracks()
-}, [search])
+    getTrending()
+   }, [])
 
-const handleSubmit = e => {
-    e.preventDefault()
-    setSearch(inputValue)
-}
+    console.log("tracks", tracks)
+  
+    const topTracks = tracks.map((track, i) => {
+        return(
+            <div key={`track${i}`}>
+                <p>{track.name} by {track.artist.name}</p>
+            </div>
+        )
+    })
 
-    return (
+    return(
         <div>
-            <h1>Trending Page</h1>
-
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="input">Search:</label>
-                <input 
-                    type='text'
-                    value={inputValue}
-                    onChange={e => setInputValue(e.target.value)}
-                />
-
-                <button type='submit'>Search</button>
-            </form>
+            <h1>Top 50 Trending Songs</h1>
+            <h4>{topTracks}</h4>
         </div>
     )
 }
+
