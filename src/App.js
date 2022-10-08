@@ -31,6 +31,7 @@ function App() {
   const [inputValue, setInputValue] = useState("")
   const [errorMessage, setErrorMessage] = useState()
   const [apiResponse, setApiResponse] = useState([])
+  const [search, setSearch] = useState("")
 
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
@@ -58,7 +59,7 @@ function App() {
   useEffect(() => {
       const trackSearch = async () => {
         try {
-          const trackSearchUrl =  `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${inputValue}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+          const trackSearchUrl =  `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${search}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
           console.log(trackSearchUrl)
           const trackResponse = await axios.get(trackSearchUrl)
           setApiResponse(trackResponse.data.results.trackmatches.track)
@@ -70,30 +71,7 @@ function App() {
       }
     }
     trackSearch()
-  }, [])
-
-  const trackList = apiResponse.map((track, i) => {
-        
-    const url = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${inputValue}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
-    console.log(url)
-    return (
-        
-        <div key={`track${i}`}>
-                <h1>{track.name}</h1>
-                <h2>Artist: {track.artist}</h2>
-                {/* images are rendering images of stars */}
-                <img src={track.image[1]['#text']} alt={track.name} />
-                {/* need to pass props down  */}
-                {console.log(track)}
-                <Link to="/post/new"><button>Post Song!</button></Link>        
-        </div>
-    )
-})
-
-  
-    
- 
-
+  }, [search])
 
   return (
     <Router>
@@ -129,7 +107,7 @@ function App() {
 
           <Route 
             path='/search'
-            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} trackList={trackList} /> : 
+            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} inputValue={inputValue} setInputValue={setInputValue} setSearch={setSearch}/> : 
             // rendering a loading page for the time a currentUser is: null
             <Loading />}
             />
@@ -152,7 +130,7 @@ function App() {
 
           <Route 
             path='/post/new'
-            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} test={"test"} apiResponse={apiResponse} setApiResponse={setApiResponse} trackList={trackList}/> : <Loading />}
+            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} test={"test"} apiResponse={apiResponse} setApiResponse={setApiResponse} /> : <Loading />}
             />
 
           <Route 
