@@ -1,4 +1,4 @@
-export default function NewPost () {
+export default function NewPost (props) {
     return (
         <div>
             New Post Form
