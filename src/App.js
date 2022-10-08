@@ -2,7 +2,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  Link
 } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Login from './components/pages/Login'
@@ -21,11 +22,15 @@ import NewPost from './components/pages/NewPost'
 import Media from './components/pages/Media'
 import Loading from './components/pages/Loading'
 import Trending from './components/pages/Trending'
+import axios from 'axios'
 
 
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null)
+  const [inputValue, setInputValue] = useState("")
+  const [errorMessage, setErrorMessage] = useState()
+  const [apiResponse, setApiResponse] = useState([])
 
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
@@ -49,6 +54,46 @@ function App() {
       setCurrentUser(null)
     }
   }
+
+  useEffect(() => {
+      const trackSearch = async () => {
+        try {
+          const trackSearchUrl =  `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${inputValue}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+          console.log(trackSearchUrl)
+          const trackResponse = await axios.get(trackSearchUrl)
+          setApiResponse(trackResponse.data.results.trackmatches.track)
+        } catch(err) {
+          console.warn(err)
+          if (err.response) {
+              setErrorMessage(err.response.data.message)
+        }
+      }
+    }
+    trackSearch()
+  }, [])
+
+  const trackList = apiResponse.map((track, i) => {
+        
+    const url = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${inputValue}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+    console.log(url)
+    return (
+        
+        <div key={`track${i}`}>
+                <h1>{track.name}</h1>
+                <h2>Artist: {track.artist}</h2>
+                {/* images are rendering images of stars */}
+                <img src={track.image[1]['#text']} alt={track.name} />
+                {/* need to pass props down  */}
+                {console.log(track)}
+                <Link to="/post/new"><button>Post Song!</button></Link>        
+        </div>
+    )
+})
+
+  
+    
+ 
+
 
   return (
     <Router>
@@ -84,7 +129,7 @@ function App() {
 
           <Route 
             path='/search'
-            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : 
+            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} trackList={trackList} /> : 
             // rendering a loading page for the time a currentUser is: null
             <Loading />}
             />
@@ -107,7 +152,7 @@ function App() {
 
           <Route 
             path='/post/new'
-            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} test={"test"} apiResponse={apiResponse} setApiResponse={setApiResponse} trackList={trackList}/> : <Loading />}
             />
 
           <Route 
