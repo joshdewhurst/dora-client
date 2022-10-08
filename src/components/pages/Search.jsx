@@ -18,7 +18,7 @@ export default function Trending () {
                 // setting the search result as a constant
                 const response = await axios.get(url)
                 console.log(response.data.results.trackmatches)
-                setApiResponse([...apiResponse,  ...response.data.results.trackmatches.track])
+                setApiResponse(response.data.results.trackmatches.track)
             } catch(err) {
                 console.warn(err)
                 if (err.response) {
@@ -27,8 +27,7 @@ export default function Trending () {
         }
     }
     getTracks()
-}, 
-[])
+}, [])
 
 const trackList = apiResponse.map((track, i) => {
     return (
@@ -53,7 +52,7 @@ const handleSubmit = async e => {
         // setting the search result as a constant
         const response = await axios.get(url)
         console.log(response.data.results.trackmatches)
-        setApiResponse([...apiResponse,  ...response.data.results.trackmatches.track])
+        setApiResponse(response.data.results.trackmatches.track)
         setInputValue('')
     } catch(err) {
         console.warn(err)
