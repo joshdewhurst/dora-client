@@ -35,6 +35,8 @@ const trackList = apiResponse.map((track, i) => {
         <div key={`track${i}`}>
                 <h1>{track.name}</h1>
                 <h2>Artist: {track.artist}</h2>
+                {/* images are rendering images of stars */}
+                <img src={track.image[1]['#text']} alt={track.name} />
         </div>
     )
 })
