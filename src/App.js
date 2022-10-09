@@ -32,6 +32,8 @@ function App() {
   const [errorMessage, setErrorMessage] = useState()
   const [apiResponse, setApiResponse] = useState([])
   const [search, setSearch] = useState("")
+  const [trending, setTrending] = useState([])
+  const [track, setTrack] = useState({})
 
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
@@ -73,6 +75,25 @@ function App() {
     trackSearch()
   }, [search])
 
+  useEffect(() => {
+    const getTrending = async (e) => {
+
+        try {
+            const trendingUrl = `https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+            const response = await axios.get(trendingUrl)
+            console.log(response.data.tracks.track)
+            setTrending(response.data.tracks.track)
+        } catch(err) {
+            console.warn(err)
+                if (err.response) {
+                    setErrorMessage(err.response.data.message)
+            }
+        }
+       
+    }
+    getTrending()
+   }, [])
+
   return (
     <Router>
       <header>
@@ -107,7 +128,7 @@ function App() {
 
           <Route 
             path='/search'
-            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} inputValue={inputValue} setInputValue={setInputValue} setSearch={setSearch}/> : 
+            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} inputValue={inputValue} setInputValue={setInputValue} setSearch={setSearch} setTrack={setTrack}/> : 
             // rendering a loading page for the time a currentUser is: null
             <Loading />}
             />
@@ -130,12 +151,12 @@ function App() {
 
           <Route 
             path='/post/new'
-            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} test={"test"} apiResponse={apiResponse} setApiResponse={setApiResponse} /> : <Loading />}
+            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} track={track}/> : <Loading />}
             />
 
           <Route 
             path='/trending'
-            element={currentUser ? <Trending handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            element={currentUser ? <Trending handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} trending={trending}/> : <Loading />}
             />
         </Routes>
       </div>

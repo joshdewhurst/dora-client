@@ -15,7 +15,7 @@ export default function Search (props) {
             {/* images are rendering images of stars */}
             <img src={track.image[1]['#text']} alt={track.name} />
             {/* need to pass props down  */}
-            <Link to="/post/new"><button>Post Song!</button></Link>
+            <Link to="/post/new"><button onClick={() => props.setTrack({ track })}>Post Song!</button></Link>
     </div>
         )
     })    
