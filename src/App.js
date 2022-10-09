@@ -29,8 +29,10 @@ function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null)
   const [inputValue, setInputValue] = useState("")
+  const [artistInputValue, setArtistInputValue] = useState("")
   const [errorMessage, setErrorMessage] = useState()
   const [apiResponse, setApiResponse] = useState([])
+  const [artistApiResponse, setArtistApiResponse] = useState([])
   const [search, setSearch] = useState("")
   const [trending, setTrending] = useState([])
   const [track, setTrack] = useState({})
@@ -73,6 +75,23 @@ function App() {
       }
     }
     trackSearch()
+  }, [search])
+
+  useEffect(() => {
+    const artistSearch = async () => {
+      try {
+        const artistUrl = `http://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${search}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+        console.log('THIS IS THE ARTISTT' + artistUrl)
+        const artistResponse = await axios.get(artistUrl)
+        setArtistApiResponse(artistResponse.data.results.artistmatches.artist)
+      } catch(err) {
+        console.warn(err)
+        if (err.response) {
+            setErrorMessage(err.response.data.message)
+      }
+      }   
+    }
+    artistSearch()
   }, [search])
 
   useEffect(() => {
@@ -128,7 +147,8 @@ function App() {
 
           <Route 
             path='/search'
-            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} inputValue={inputValue} setInputValue={setInputValue} setSearch={setSearch} setTrack={setTrack}/> : 
+            element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} 
+            artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} inputValue={inputValue} setInputValue={setInputValue} artistInputValue={artistInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setTrack={setTrack}/> : 
             // rendering a loading page for the time a currentUser is: null
             <Loading />}
             />

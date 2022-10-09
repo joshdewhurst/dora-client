@@ -20,16 +20,29 @@ export default function Search (props) {
         )
     })    
 
-    const handleSubmit = (e) => {
+    const artistList = props.artistApiResponse.map((artist, i) => {
+        return (
+            <div key={`artist${i}`}>
+            <h1>{artist.name}</h1>
+            </div>
+        )
+    })  
+
+    const handleTrackSubmit = (e) => {
         e.preventDefault()
         props.setSearch(props.inputValue)
+    }
+
+    const handleArtistSubmit = (e) => {
+        e.preventDefault()
+        props.setSearch(props.artistInputValue)
     }
 
     return (
         <div>
             <h1>Search songs!</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleTrackSubmit}>
                 <label htmlFor="input">Search:</label>
                 <input 
                     type='text'
@@ -39,8 +52,20 @@ export default function Search (props) {
 
                 <button type='submit'>Search</button>
             </form>
-            {console.log(props)}
             {trackList}
+
+            <h1>Search Artist</h1>
+            <form onSubmit={handleArtistSubmit}>
+                <label htmlFor="input">Search:</label>
+                <input 
+                    type='text'
+                    value={props.artistInputValue}
+                    onChange={e => props.setArtistInputValue(e.target.value)}
+                />
+
+                <button type='submit'>Search</button>
+            </form>
+            {artistList}
         </div>
     )
 }
