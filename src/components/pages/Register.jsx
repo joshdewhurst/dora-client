@@ -47,38 +47,55 @@ export default function Register({ currentUser, setCurrentUser }) {
 
 	return (
 		<div>
-			<h1>Register for an account:</h1>
+			<h1 className='text-2xl font-bold'>Register for an account:</h1>
 
 			<p>{msg}</p>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='name'>Name:</label>
-				<input 
-					type="text"
-					id="name"
-					placeholder='your username...'
-					onChange={e => setName(e.target.value)}
-					value={name}
-				/>
+			<form className='text-3xl w-1/3 mx-auto' onSubmit={handleSubmit}>
+				<div className='flex justify-around '>
+					<div className='w-1/2'>
+						<label htmlFor='name'>Name:</label>
+					</div>
+					<div className='w-fit'>
+						<input 
+							type="text"
+							id="name"
+							placeholder='your username...'
+							onChange={e => setName(e.target.value)}
+							value={name}
+						/>
+					</div>
+				</div>
 
-				<label htmlFor='email'>Email:</label>
-				<input 
-					type="email"
-					id="email"
-					placeholder='your email...'
-					onChange={e => setEmail(e.target.value)}
-					value={email}
-				/>
+				<div className='flex justify-around '>
+					<div className='w-1/2'>
+						<label htmlFor='email'>Email:</label>
+					</div>
+					<div className='w-fit'>
+						<input 
+							type="email"
+							id="email"
+							placeholder='your email...'
+							onChange={e => setEmail(e.target.value)}
+							value={email}
+						/>
+					</div>
+				</div>
 
-				<label htmlFor='password'>Password:</label>
-				<input 
-					type="password"
-					id="password"
-					placeholder='password...'
-					onChange={e => setPassword(e.target.value)}
-					value={password}
-				/>
-
+				<div className='flex justify-around'>
+					<div className='w-1/2'>
+						<label htmlFor='password'>Password:</label>
+					</div>
+					<div className='w-fit'> 
+						<input 
+							type="password"
+							id="password"
+							placeholder='password...'
+							onChange={e => setPassword(e.target.value)}
+							value={password}
+						/>
+					</div>
+				</div>	
 				<button type="submit">Register</button>
 			</form>
 		</div>
