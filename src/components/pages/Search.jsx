@@ -20,22 +20,26 @@ export default function Search (props) {
         )
     })    
 
-    const artistList = props.artistApiResponse.map((artist, i) => {
+    const artistList = props.artistApiResponse.map((artists, i) => {
         return (
             <div key={`artist${i}`}>
-            <h1>{artist.name}</h1>
+            <h1>{artists.name}</h1>
             </div>
         )
     })  
+    
+    
 
     const handleTrackSubmit = (e) => {
         e.preventDefault()
         props.setSearch(props.inputValue)
+       
     }
 
     const handleArtistSubmit = (e) => {
         e.preventDefault()
-        props.setSearch(props.artistInputValue)
+        props.setArtist(props.artistInputValue)
+      
     }
 
     return (
