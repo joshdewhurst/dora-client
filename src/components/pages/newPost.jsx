@@ -15,7 +15,7 @@ console.log(props.test)
                 <input type="text" id="songArtist" value={`${props.track.track.artist}`} readOnly></input>
                 <br></br>
                 <label htmlFor="songRating">Rating:</label>
-                <input type="number" id="songRating" max="10"></input>
+                <input type="number" id="songRating" min="0" max="10"></input>
                 <br></br>
                 <label htmlFor="songBlurb">Blurb:</label>
                 <input type="text" id="blurb"></input>
