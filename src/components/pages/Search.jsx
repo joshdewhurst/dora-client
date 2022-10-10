@@ -43,33 +43,36 @@ export default function Search (props) {
     }
 
     return (
-        <div>
-            <h1>Search songs!</h1>
+        <div className='flex flex-row justify-around mx-auto bg-slate-400'>
+            <div className='w-1/3 mb-10 p-4'>
+                <h1>Search songs!</h1>
 
-            <form onSubmit={handleTrackSubmit}>
-                <label htmlFor="input">Search:</label>
-                <input 
-                    type='text'
-                    value={props.inputValue}
-                    onChange={e => props.setInputValue(e.target.value)}
-                />
+                <form onSubmit={handleTrackSubmit}>
+                    <label htmlFor="input">Search:</label>
+                    <input 
+                        type='text'
+                        value={props.inputValue}
+                        onChange={e => props.setInputValue(e.target.value)}
+                    />
 
-                <button type='submit'>Search</button>
-            </form>
-            {trackList}
+                    <button type='submit'>Search</button>
+                </form>
+                {trackList}
+            </div>
+            <div className='w-1/3 mb-10 p-4'>
+                <h1>Search Artist</h1>
+                <form onSubmit={handleArtistSubmit}>
+                    <label htmlFor="input">Search:</label>
+                    <input 
+                        type='text'
+                        value={props.artistInputValue}
+                        onChange={e => props.setArtistInputValue(e.target.value)}
+                    />
 
-            <h1>Search Artist</h1>
-            <form onSubmit={handleArtistSubmit}>
-                <label htmlFor="input">Search:</label>
-                <input 
-                    type='text'
-                    value={props.artistInputValue}
-                    onChange={e => props.setArtistInputValue(e.target.value)}
-                />
-
-                <button type='submit'>Search</button>
-            </form>
-            {artistList}
+                    <button type='submit'>Search</button>
+                </form>
+                {artistList}
+            </div>
         </div>
     )
 }
