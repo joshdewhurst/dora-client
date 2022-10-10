@@ -10,6 +10,8 @@ export default function NewPost (props) {
         blurb: "",
         user: props.currentUser.id
     })
+
+   
     const [errorMessage, setErrorMessage] = useState("")
     const navigate = useNavigate()
     
