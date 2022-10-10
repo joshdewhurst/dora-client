@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from "react-router-dom" 
 
-export default function Profile({ currentUser, handleLogout }) {
+export default function Profile({ currentUser, handleLogout, props }) {
 	// state for the secret message (aka user privilaged data)
 	const [msg, setMsg] = useState('')
+	// Setting other states
+	const [posts, setPosts] = useState([])
+    const [errorMessage, setErrorMessage] = useState("")
 
 	// useEffect for getting the user data and checking auth
 	useEffect(() => {
@@ -36,6 +40,41 @@ export default function Profile({ currentUser, handleLogout }) {
 		}
 		fetchData()
 	})
+
+
+// creating a new UseEffect for rendering the user posts
+useEffect(() => {
+	const getPosts = async () => {
+		try {
+			const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)
+			console.log(response.data)
+			setPosts(response.data)
+		} catch (err) {
+			console.warn(err)
+			if (err.response) {
+				setErrorMessage(err.response.data.message)
+			}
+		}
+	}
+	getPosts()
+}, [])
+
+const userPosts = posts.map((post) => {
+	if (post.user === currentUser.id) {  
+		return(
+		
+			<div key={`${post._id}`}>
+				<Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
+				<p>Rating: {post.rating}</p>
+				<p>Blurb: {post.blurb}</p>
+				
+			</div>
+		)
+	} 
+})
+
+
+
 	return (
 		<div>
 			<h1>Hello, {currentUser.name}</h1>
@@ -45,6 +84,9 @@ export default function Profile({ currentUser, handleLogout }) {
 			<h2>Here is the secret message that is only availible to users of User App:</h2>
 
 			<h3>{msg}</h3>
+
+			<h1>Your Posts</h1>
+         	 {userPosts}
 		</div>
 	)
 }
