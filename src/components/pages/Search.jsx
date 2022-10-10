@@ -27,15 +27,19 @@ export default function Search (props) {
             </div>
         )
     })  
+    
+    
 
     const handleTrackSubmit = (e) => {
         e.preventDefault()
         props.setSearch(props.inputValue)
+       
     }
 
     const handleArtistSubmit = (e) => {
         e.preventDefault()
-        props.setSearch(props.artistInputValue)
+        props.setArtist(props.artistInputValue)
+      
     }
 
     return (
