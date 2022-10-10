@@ -2,14 +2,13 @@ import { Link, BrowserRouter } from 'react-router-dom'
 
 export default function Navbar({ currentUser, handleLogout }) {
 	 const loggedIn = (
-		<div className='mx-auto w-3/4 inline-block flex-nowrap'>
+		<div className='mx-auto w-3/4 inline-block flex-nowrap uppercase'>
 			<Link to='/home'>Feed</Link> { " | "}
 			<Link to='/trending'>Trending</Link> { " | "}
 			<Link to='/search'>Search</Link> { " | "}
 			{/* if the user is logged in... */}
-<Link to="/"> <span onClick={handleLogout}>Logout</span> </Link> { " | "}
-			<Link to="/post">Your Posts</Link> { " | "}
-			<Link to="/profile">Profile</Link> 
+			<Link to="/profile">Profile</Link>
+			<Link className='ml-12' to="/"> <span onClick={handleLogout}>Logout</span> </Link> 
 		</div>
 	 )
 
@@ -29,9 +28,9 @@ export default function Navbar({ currentUser, handleLogout }) {
 
 	return (
 		<nav className='bg-blue-600'>
-			<div className='mx-auto text-4xl w-fit  whitespace-nowrap font-bold mb-5 p-5 text-white'>
+			<div className='mx-auto text-4xl w-fit  whitespace-nowrap font-bold p-5 text-white'>
 				<Link className='inline-block mr-12' to="/">
-					<p>d'ora</p>
+					<p className='text-5xl'>d'ora</p>
 				</Link>
 				{currentUser ? loggedIn : loggedOut}
 			</div>
