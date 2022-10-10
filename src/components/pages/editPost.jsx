@@ -28,7 +28,7 @@ export default function EditPost (props) {
         try {
             e.preventDefault()
             const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`, form)
-            navigate(`/`)
+            navigate(`/post`)
         } catch(err) {
             console.warn(err)
             if (err.response) {
