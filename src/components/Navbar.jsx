@@ -7,8 +7,9 @@ export default function Navbar({ currentUser, handleLogout }) {
 			<Link to='/trending'>Trending</Link> { " | "}
 			<Link to='/search'>Search</Link> { " | "}
 			{/* if the user is logged in... */}
-			<Link to="/profile">Profile</Link>{ " | "}
-			<Link to="/"> <span onClick={handleLogout}>Logout</span> </Link> 
+<Link to="/"> <span onClick={handleLogout}>Logout</span> </Link> { " | "}
+			<Link to="/post">Your Posts</Link> { " | "}
+			<Link to="/profile">Profile</Link> 
 		</div>
 	 )
 
