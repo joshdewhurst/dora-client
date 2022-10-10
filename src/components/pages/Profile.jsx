@@ -60,13 +60,19 @@ useEffect(() => {
 }, [])
 
 const userPosts = posts.map((post) => {
-	if (post.user === currentUser.id) {  
+	if (post.user === currentUser.id) {
+		  
 		return(
 		
-			<div key={`${post._id}`}>
-				<Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
-				<p>Rating: {post.rating}</p>
-				<p>Blurb: {post.blurb}</p>
+			<div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl ">
+			
+				<div className='text-left p-4 h-fit w-fit font-bold'>
+					<Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
+					<p>Rating: {post.rating}</p>
+				</div>
+				<div className='text-left p-4 bg-blue-800 rounded-3xl'>
+					<p>{post.blurb}</p>
+				</div>
 				
 			</div>
 		)
@@ -76,17 +82,19 @@ const userPosts = posts.map((post) => {
 
 
 	return (
-		<div>
-			<h1>Hello, {currentUser.name}</h1>
-
-			<p>your email is {currentUser.email}</p>
-
-			<h2>Here is the secret message that is only availible to users of User App:</h2>
-
-			<h3>{msg}</h3>
-
-			<h1>Your Posts</h1>
-         	 {userPosts}
+		<div className='flex h-84 flex-row  mx-auto'>
+			<div className='w-2/5 flex justify-end'>
+				<div className='w-2/3 p-8 mt-24 text-white text-left font-bold uppercase bg-blue-900 rounded-3xl h-fit'>
+						<h1 className='text-5xl'>Welcome,<br/> {currentUser.name}</h1>
+						<p className='text-3xl'>Email: {currentUser.email}</p>
+						<button className='mt-3 p-3 bg-blue-600 rounded-md'>Edit Profile</button>
+				</div>
+			</div>
+			<div className='w-full flex justify-start'>
+				<div className='w-5/6 p-24'>
+					{userPosts}
+				</div>
+			</div>
 		</div>
 	)
 }
