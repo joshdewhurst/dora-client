@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Search (props) {
     const [state, setState] = useState({})
     const [errorMessage, setErrorMessage] = useState("")
+    const [searchType, setSearchType] = useState('song')
     useEffect(() => {
         try {
             props.setApiResponse([])
@@ -50,29 +51,38 @@ export default function Search (props) {
         )
     })  
     
-    
-
-    const handleTrackSubmit = (e) => {
+    const handleSearch = (e) => {
         e.preventDefault()
-        props.setSearch(props.inputValue)
-       
+        if (searchType === 'song') {
+            props.setSearch(props.inputValue)
+
+        }
+
+        if (searchType === 'artist') {
+            props.setArtist(props.inputValue)
+
+        }
     }
 
-    const handleArtistSubmit = (e) => {
-        e.preventDefault()
-        props.setArtist(props.artistInputValue)
-      
+    const handleSearchClickArtist = () => {
+        setSearchType('artist')
+            
     }
+
+    const handleSearchClickSong = () => {
+        setSearchType('song')
+    }
+
 
     return (
-        <div className='flex flex-row justify-around mx-auto'>
-            <div className='w-1/3 mb-10 bg-slate-800'>
-                {/* <h1>Search songs!</h1> */}
-
-                <form className='bg-black mx-auto text-white p-4 font-bold' onSubmit={handleTrackSubmit}>
-                    <label className='mr-2' htmlFor="input">Search Music</label>
+        <div>
+            <div className='flex bg-slate-600 p-4 flex-row justify-center mx-auto text-white font-bold'>
+                <button className={`w-fit h-fit ml-2 p-3 ${searchType==='song'? 'bg-blue-800' : 'bg-blue-600'} rounded-md`} onClick={handleSearchClickSong}>SONGS</button>
+                <button className={`w-fit h-fit ml-2 p-3 ${searchType==='artist'? 'bg-blue-800' : 'bg-blue-600'} rounded-md`} onClick={handleSearchClickArtist}>ARTISTS</button>
+                <form className='w-fit ' onSubmit={handleSearch}>
+                    <label className='mr-2' htmlFor="input"></label>
                     <input 
-                        className='text-black px-2'
+                        className='text-black p-2 rounded-md'
                         type='text'
                         value={props.inputValue}
                         onChange={e => props.setInputValue(e.target.value)}
@@ -80,23 +90,8 @@ export default function Search (props) {
 
                     <button className='ml-2 p-3 bg-blue-600 rounded-md' type='submit'>SEARCH</button>
                 </form>
-                {trackList}
             </div>
-            <div className='w-1/3 mb-10 bg-slate-800'>
-                {/* <h1>Search Artist</h1> */}
-                <form className='bg-black mx-auto text-white p-4 font-bold' onSubmit={handleArtistSubmit}>
-                    <label className='mr-4' htmlFor="input">Search Artists</label>
-                    <input 
-                        className='text-black px-2'
-                        type='text'
-                        value={props.artistInputValue}
-                        onChange={e => props.setArtistInputValue(e.target.value)}
-                    />
-
-                    <button className='ml-2 p-3 bg-blue-600 rounded-md' type='submit'>SEARCH</button>
-                </form>
-                {artistList}
-            </div>
+                {searchType==='song'? trackList : artistList }
         </div>
     )
 }
