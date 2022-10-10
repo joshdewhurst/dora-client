@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom" 
+import { Link, useParams } from "react-router-dom" 
 import axios from "axios"
 
 export default function Home (props) {
     const [posts, setPosts] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
+    const {id} = useParams()
 
     useEffect(() => {
         const getPosts = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)
-                console.log(response.data)
+                // console.log(response.data)
                 setPosts(response.data)
-                console.log(posts)
+                // console.log(posts)
+                const userTest = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${id}`)
+                console.log("HELLLLOOOOOOOO" + userTest)
             } catch (err) {
                 console.warn(err)
                 if (err.response) {
@@ -26,8 +29,8 @@ export default function Home (props) {
     const allPosts = posts.map((post) => {
         return(
             
-                <div key={`${post._id}`} class="border-2 mx-auto my-2 w-64 border-blue-900">
-                    <div class="font-mono">
+                <div key={`${post._id}`} className="border-2 mx-auto my-2 w-64 border-blue-900">
+                    <div className="font-mono">
                     <Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
                     <p>Rating: {post.rating}</p>
                     <p>Blurb: {post.blurb}</p>
