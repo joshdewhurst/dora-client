@@ -54,7 +54,7 @@ export default function NewPost (props) {
                         value={`${props.track.track.artist}`} 
                         disabled class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    disabled:bg-slate-50 disabled:text-slate-500 
                     invalid:border-pink-500 invalid:text-pink-600
                     focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                     ">
@@ -67,11 +67,12 @@ export default function NewPost (props) {
                         max="10"
                         onChange={(e) => setForm({...form, rating: e.target.value})}
                         placeholder="Rate the song 1-10"
-                        class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                        class="mt-1 block w-full px-3 py-2 bg-white border 
+                        caret-sky-500 border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
                     disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                    invalid:border-pink-500 invalid:text-pink-600
-                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    invalid:border-pink-500 invalid:text-red-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-red-500
                     
                     ">
                     </input>
@@ -80,11 +81,11 @@ export default function NewPost (props) {
                     <input type="text" 
                         id="blurb"
                         onChange={(e) => setForm({...form, blurb: e.target.value})}
-                        class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                        class="mt-1 block w-full px-3 py-2 bg-white border caret-sky-500 border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
                     disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                    invalid:border-pink-500 invalid:text-pink-600
-                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    invalid:border-pink-500 invalid:text-red-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-red-500
                     ">
                     </input>
                 </div>
