@@ -179,9 +179,10 @@ function App() {
 
           <Route 
           // will need to change path later
-            path='/media'
+            path='/media/:name/:artist'
             element={currentUser ? <Media handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
             />
+          
 
           <Route 
             path='/post/new'
