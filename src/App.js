@@ -22,6 +22,8 @@ import NewPost from './components/pages/NewPost'
 import Media from './components/pages/Media'
 import Loading from './components/pages/Loading'
 import Trending from './components/pages/Trending'
+import Post from './components/pages/Post'
+import Posts from './components/pages/Posts'
 import axios from 'axios'
 
 
@@ -156,7 +158,17 @@ function App() {
             />
 
           <Route 
-            path='/post/edit'
+            path='/post'
+            element={currentUser ? <Posts handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            />
+
+          <Route 
+            path='/post/:id'
+            element={currentUser ? <Post handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            />
+
+          <Route 
+            path='/post/:id/edit'
             element={currentUser ? <EditPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
             />
 
