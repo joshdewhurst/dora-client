@@ -32,22 +32,32 @@ export default function NewPost (props) {
     }
     
     return (
-        <div>
+        <div class="flex-col w-1/2 mx-auto">
             {/* need to add submit button and handler */}
             <form onSubmit={handleSubmit}>
-                <div>
+                <div >
                     <label htmlFor="songTitle">Song Title:</label>
                     <input type="text" 
                         id="songTitle" 
                         value={`${props.track.track.name}`} 
-                        readOnly>
+                        disabled class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    ">
                     </input>
                     <br></br>
                     <label htmlFor="songArtist">Artist:</label>
                     <input type="text" 
                         id="songArtist" 
                         value={`${props.track.track.artist}`} 
-                        readOnly>
+                        disabled class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    ">
                     </input>
                     <br></br>
                     <label htmlFor="songRating">Rating:</label>
@@ -55,17 +65,33 @@ export default function NewPost (props) {
                         id="songRating" 
                         min="0" 
                         max="10"
-                        onChange={(e) => setForm({...form, rating: e.target.value})}>
+                        onChange={(e) => setForm({...form, rating: e.target.value})}
+                        placeholder="Rate the song 1-10"
+                        class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    
+                    ">
                     </input>
                     <br></br>
                     <label htmlFor="songBlurb">Blurb:</label>
                     <input type="text" 
                         id="blurb"
-                        onChange={(e) => setForm({...form, blurb: e.target.value})}>
+                        onChange={(e) => setForm({...form, blurb: e.target.value})}
+                        class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    ">
                     </input>
                 </div>
-                <button type="submit">Post Song!</button>
+                <br></br>
+                <button type="submit" class="ml-2 p-3 bg-blue-600 rounded-md">Post Song!</button>
             </form>
+         
         </div>
         
     )

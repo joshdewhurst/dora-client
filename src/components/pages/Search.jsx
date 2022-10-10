@@ -16,7 +16,6 @@ export default function Search (props) {
                         <h2>Artist: {track.artist}</h2>
                     </div>
                     {/* images are rendering images of stars */}
-                    {/* need to pass props down  */}
                     <div className='bg-blue-600 w-fit mx-auto p-2 rounded-md font-bold my-2 text-white'>
                         <Link to="/post/new"><button onClick={() => props.setTrack({ track })}>POST SONG</button></Link>
                     </div>
