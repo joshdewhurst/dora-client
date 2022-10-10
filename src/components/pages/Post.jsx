@@ -6,6 +6,7 @@ export default function Post () {
     const [post, setPost] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
     const { id } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const getPost = async () => {
@@ -22,6 +23,20 @@ export default function Post () {
         }
         getPost()
     }, [])
+
+    const deletePost = async () => {
+        try {
+            await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`)
+            navigate("/post")
+            
+
+        } catch (err) {
+            console.warn(err) 
+            if (err.response) {
+                setErrorMessage(err.response.data.message)
+            }
+        }
+    }
     return (
         <div>
             <div>
@@ -35,6 +50,7 @@ export default function Post () {
                 <Link to={`/post/${id}/edit`}>
                     <button>Edit</button>
                 </Link>
+                <button onClick={deletePost}>Delete Post</button>
             </div>
            
         </div>

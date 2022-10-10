@@ -11,15 +11,14 @@ export default function NewPost (props) {
         user: props.currentUser.id
     })
     const [errorMessage, setErrorMessage] = useState("")
-    const navigate = useNavigate
+    const navigate = useNavigate()
     
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/new`, form)
             console.log("posted")
-            
-        
+            navigate("/home")
         } catch(err) {
         console.warn(err)
         if (err.response) {
