@@ -22,6 +22,8 @@ import NewPost from './components/pages/NewPost'
 import Media from './components/pages/Media'
 import Loading from './components/pages/Loading'
 import Trending from './components/pages/Trending'
+import Post from './components/pages/Post'
+import Posts from './components/pages/Posts'
 import axios from 'axios'
 
 
@@ -34,8 +36,10 @@ function App() {
   const [apiResponse, setApiResponse] = useState([])
   const [artistApiResponse, setArtistApiResponse] = useState([])
   const [search, setSearch] = useState("")
+  const [artist, setArtist] = useState("")
   const [trending, setTrending] = useState([])
   const [track, setTrack] = useState({})
+  
 
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
@@ -80,7 +84,7 @@ function App() {
   useEffect(() => {
     const artistSearch = async () => {
       try {
-        const artistUrl = `http://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${search}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+        const artistUrl = `http://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${artist}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
         console.log('THIS IS THE ARTISTT' + artistUrl)
         const artistResponse = await axios.get(artistUrl)
         setArtistApiResponse(artistResponse.data.results.artistmatches.artist)
@@ -92,7 +96,7 @@ function App() {
       }   
     }
     artistSearch()
-  }, [search])
+  }, [artist])
 
   useEffect(() => {
     const getTrending = async (e) => {
@@ -148,13 +152,23 @@ function App() {
           <Route 
             path='/search'
             element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} 
-            artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} inputValue={inputValue} setInputValue={setInputValue} artistInputValue={artistInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setTrack={setTrack}/> : 
+            artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} inputValue={inputValue} setInputValue={setInputValue} artistInputValue={artistInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setTrack={setTrack} setArtist={setArtist}/> : 
             // rendering a loading page for the time a currentUser is: null
             <Loading />}
             />
 
           <Route 
-            path='/post/edit'
+            path='/post'
+            element={currentUser ? <Posts handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            />
+
+          <Route 
+            path='/post/:id'
+            element={currentUser ? <Post handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            />
+
+          <Route 
+            path='/post/:id/edit'
             element={currentUser ? <EditPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
             />
 
