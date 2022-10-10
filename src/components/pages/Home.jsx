@@ -26,10 +26,12 @@ export default function Home (props) {
     const allPosts = posts.map((post) => {
         return(
             
-                <div key={`${post._id}`}>
+                <div key={`${post._id}`} class="border-2 mx-auto my-2 w-64 border-blue-900">
+                    <div class="font-mono">
                     <Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
                     <p>Rating: {post.rating}</p>
                     <p>Blurb: {post.blurb}</p>
+                    </div>
                     
                 </div>
             )
@@ -37,11 +39,6 @@ export default function Home (props) {
     
     return (
         <div>
-            Home page feed
-            {/* creating links to edit and create a post */}
-            <Link to='/post/new'>New Post</Link>
-            <Link to='/post/edit'>Edit Post</Link>
-
             <h2>Your Feed</h2>
             {allPosts}
         </div>
