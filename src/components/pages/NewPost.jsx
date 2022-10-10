@@ -11,6 +11,8 @@ export default function NewPost (props) {
         user: props.currentUser.id
     })
 
+    localStorage.setItem("title", form.title)
+    const songTitle = localStorage.getItem("title")
    
     const [errorMessage, setErrorMessage] = useState("")
     const navigate = useNavigate()
