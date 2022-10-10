@@ -1,9 +1,22 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 export default function Trending(props) {
-    const [mediaToSend, setMediaToSend] = useState('')
-    
+    const [errorMessage, setErrorMessage] = useState("")
+    useEffect(() => {
+        try {
+            props.setApiResponse([])
+            props.setArtistApiResponse([])
+            props.setInputValue("")
+            props.setArtistInputValue("")
+            props.setSearch("")
+            props.setArtist("")
+        }catch (err) {
+            console.warn(err)
+            if (err.response) {
+                setErrorMessage(err.response.data.message)
+            }
+        }
+    }, [])
   
     const topTracks = props.trending.map((track, i) => {
         return(

@@ -68,7 +68,6 @@ function App() {
       const trackSearch = async () => {
         try {
           const trackSearchUrl =  `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${search}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
-          console.log(trackSearchUrl)
           const trackResponse = await axios.get(trackSearchUrl)
           setApiResponse(trackResponse.data.results.trackmatches.track)
         } catch(err) {
@@ -85,7 +84,6 @@ function App() {
     const artistSearch = async () => {
       try {
         const artistUrl = `http://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${artist}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
-        console.log('THIS IS THE ARTISTT' + artistUrl)
         const artistResponse = await axios.get(artistUrl)
         setArtistApiResponse(artistResponse.data.results.artistmatches.artist)
       } catch(err) {
@@ -104,7 +102,6 @@ function App() {
         try {
             const trendingUrl = `https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${process.env.REACT_APP_API_KEY}&format=json`
             const response = await axios.get(trendingUrl)
-            console.log(response.data.tracks.track)
             setTrending(response.data.tracks.track)
         } catch(err) {
             console.warn(err)
@@ -130,7 +127,7 @@ function App() {
         <Routes>
           <Route 
             path="/"
-            element={<Welcome />}
+            element={<Welcome apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setArtist={setArtist}/>}
           />
 
           <Route 
@@ -146,7 +143,8 @@ function App() {
           {/* conditionally render auth locked routes */}
           <Route 
             path="/profile"
-            element={currentUser ? <Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />}
+            element={currentUser ? <Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
+            apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Navigate to="/login" />}
           />
 
           <Route 
@@ -159,22 +157,25 @@ function App() {
 
           <Route 
             path='/post'
-            element={currentUser ? <Posts handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            element={currentUser ? <Posts handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
+            apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
             />
 
           <Route 
             path='/post/:id'
-            element={currentUser ? <Post handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            element={currentUser ? <Post handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
+            apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
             />
 
           <Route 
             path='/post/:id/edit'
-            element={currentUser ? <EditPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            element={currentUser ? <EditPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
+            apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
             />
 
           <Route 
             path='/home'
-            element={currentUser ? <Home handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
+            element={currentUser ? <Home handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
             />
 
           <Route 
@@ -186,12 +187,12 @@ function App() {
 
           <Route 
             path='/post/new'
-            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} track={track}/> : <Loading />}
+            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
             />
 
           <Route 
             path='/trending'
-            element={currentUser ? <Trending handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} trending={trending}/> : <Loading />}
+            element={currentUser ? <Trending handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} trending={trending} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setArtistInputValue={setArtistInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
             />
         </Routes>
       </div>
