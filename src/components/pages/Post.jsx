@@ -48,9 +48,9 @@ export default function Post () {
             </div>
             <div>
                 <Link to={`/post/${id}/edit`}>
-                    <button>Edit</button>
+                    <button class="ml-2 p-3 bg-blue-600 rounded-md">Edit Post</button>
                 </Link>
-                <button onClick={deletePost}>Delete Post</button>
+                <button onClick={deletePost} class="ml-2 p-3 bg-blue-600 rounded-md">Delete Post</button>
             </div>
            
         </div>
