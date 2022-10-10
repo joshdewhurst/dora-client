@@ -1,9 +1,27 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Search (props) {
-    
+    const [state, setState] = useState({})
+    const [errorMessage, setErrorMessage] = useState("")
+    useEffect(() => {
+        try {
+            props.setApiResponse([])
+            props.setArtistApiResponse([])
+            props.setInputValue("")
+            props.setArtistInputValue("")
+            props.setSearch("")
+            props.setArtist("")
+        }catch (err) {
+            console.warn(err)
+            if (err.response) {
+                setErrorMessage(err.response.data.message)
+            }
+        }
+    }, [])
 
     const trackList = props.apiResponse.map((track, i) => {
+        
         return (
             <div key={`track${i}`} className=" my-4 flex p-4">
                 <div className='w-1/3 flex justify-center pr-3'>
@@ -19,8 +37,7 @@ export default function Search (props) {
                     <div className='bg-blue-600 w-fit mx-auto p-2 rounded-md font-bold my-2 text-white'>
                         <Link to="/post/new"><button onClick={() => props.setTrack({ track })}>POST SONG</button></Link>
                     </div>
-
-                </div>
+            </div>
     </div>
         )
     })    

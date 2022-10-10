@@ -2,11 +2,27 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-export default function Post () {
+export default function Post (props) {
     const [post, setPost] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
     const { id } = useParams()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        try {
+            props.setApiResponse([])
+            props.setArtistApiResponse([])
+            props.setInputValue("")
+            props.setArtistInputValue("")
+            props.setSearch("")
+            props.setArtist("")
+        }catch (err) {
+            console.warn(err)
+            if (err.response) {
+                setErrorMessage(err.response.data.message)
+            }
+        }
+    }, [])
 
     useEffect(() => {
         const getPost = async () => {
