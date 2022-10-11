@@ -48,7 +48,7 @@ export default function Home (props) {
                 <table class="table-auto border-separate border-spacing-4 border rounded-lg">
                     <thead>
                         <tr>
-                        <th className="border-2 border-blue-400 rounded-full text-center">Song</th>
+                        <th className="border-2 border-blue-400 rounded-full text-center p-1">Song</th>
                         <th className="border-2 border-blue-800 rounded-full text-center">Artist</th>
                         <th className="border-2 border-blue-600 rounded-full text-center">Rating</th>
                         </tr>
@@ -61,7 +61,9 @@ export default function Home (props) {
                         </tr>
                     </tbody>
                 </table>
-                <p>Blurb: {post.blurb}</p>
+                <div>
+                    <p className="text-center">Blurb: {post.blurb}</p>
+                </div>
                 <Link to={`/post/${post._id}`} className="bg-sky-500 hover:bg-sky-700 rounded-lg p-1 m-2">Expand Post</Link>
                 </div>
             </div>
