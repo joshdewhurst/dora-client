@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom'
 
 export default function Search (props) {
     const [state, setState] = useState({})
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState('')
     const [searchType, setSearchType] = useState('song')
+
+    // clears state so that search results are cleared when you navigate to different pages on the navbar
     useEffect(() => {
         try {
             props.setApiResponse([])
             props.setArtistApiResponse([])
             props.setInputValue("")
-            props.setArtistInputValue("")
             props.setSearch("")
             props.setArtist("")
         }catch (err) {
@@ -24,7 +25,7 @@ export default function Search (props) {
     const trackList = props.apiResponse.map((track, i) => {
         
         return (
-            <div key={`track${i}`} className=" my-4 flex p-4">
+            <div key={`track${i}`} className="my-4 flex p-4">
                 <div className='w-1/3 flex justify-center pr-3'>
                     <img className='rounded-full' src={track.image[1]['#text']} alt={track.name} />
 

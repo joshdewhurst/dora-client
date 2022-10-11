@@ -9,6 +9,12 @@ export default function Home (props) {
     // const [username, setUsername] = useState([])
 
     useEffect(() => {
+            props.setApiResponse([])
+            props.setArtistApiResponse([])
+            props.setInputValue("")
+            props.setArtistInputValue("")
+            props.setSearch("")
+            props.setArtist("")
         const getPosts = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)

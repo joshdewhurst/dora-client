@@ -12,13 +12,13 @@ export default function NewPost (props) {
     })
     const [errorMessage, setErrorMessage] = useState("")
     const navigate = useNavigate()
-
+    
+    // clears state so that search results are cleared when you navigate to different pages on the navbar
     useEffect(() => {
         try {
             props.setApiResponse([])
             props.setArtistApiResponse([])
             props.setInputValue("")
-            props.setArtistInputValue("")
             props.setSearch("")
             props.setArtist("")
         }catch (err) {
