@@ -14,8 +14,6 @@ export default function NewPost (props) {
     const navigate = useNavigate()
     const { type } = useParams()
 
-    console.log(type)
-    
     // clears state so that search results are cleared when you navigate to different pages on the navbar
     // useEffect(() => {
     //     try {
@@ -31,16 +29,19 @@ export default function NewPost (props) {
     //         }
     //     }
     // }, [])
+    
 
     useEffect(()=> {
-        setForm({title: props.track.track.name, artist: props.track.track.artist})
-    }, [props.track])
+        type === 'track'? setForm({title: props.track.track.name, artist: props.track.track.artist}) : 
+        setForm({title: null, artist: props.artist.artist.name})
+        
+    }, [props.setArtist, props.setTrack])
     
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/new`, form)
-            console.log("posted")
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/new`, form)
+            // console.log("posted")
             navigate("/home")
         } catch(err) {
         console.warn(err)
@@ -50,9 +51,6 @@ export default function NewPost (props) {
         }
     }
 
-    console.log(props.track)
-
-
     const trackForm =
             (
             <form onSubmit={handleSubmit}>
@@ -61,7 +59,7 @@ export default function NewPost (props) {
                     <input type="text" 
                         id="songTitle" 
                         readOnly
-                        value={`${props.track.track.name}`} 
+                        value={`${type === 'track'? props.track.track.name : null}`} 
                         className='formInputs'>
                     </input>
                     <br></br>
@@ -69,7 +67,7 @@ export default function NewPost (props) {
                     <input type="text" 
                         id="songArtist" 
                         readOnly
-                        value={`${props.track.track.artist}`} 
+                        value={`${type === 'track'? props.track.track.artist : null}`} 
                         className="formInputs">
                     </input>
                     <br></br>
@@ -106,7 +104,7 @@ export default function NewPost (props) {
                 <label htmlFor="songArtist">Artist:</label>
                 <input type="text" 
                     id="songArtist" 
-                    value={`${props.track.track.artist}`} 
+                    value={`${type === 'artist'? props.artist.artist.name : null}`} 
                     className="formInputs">
                 </input>
                 <br></br>
@@ -116,7 +114,7 @@ export default function NewPost (props) {
                     min="0" 
                     max="10"
                     onChange={(e) => setForm({...form, rating: e.target.value})}
-                    placeholder="Rate the song 1-10"
+                    placeholder="Rate the Artist 1-10"
                     className="formInputs">
                 </input>
                 <br></br>

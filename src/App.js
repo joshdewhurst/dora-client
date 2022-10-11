@@ -189,7 +189,7 @@ function App() {
           <Route 
             path='/post/new/:type'
 
-            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} track={track} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
+            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} track={track} artist={artist} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
 
             />
 
