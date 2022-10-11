@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom"
 
 export default function NewPost (props) {
     const [form, setForm] = useState({
-        title: [],
-        artist: [],
+        title: '',
+        artist: '',
         rating: 0,
         blurb: "",
         user: props.currentUser.id
@@ -14,20 +14,24 @@ export default function NewPost (props) {
     const navigate = useNavigate()
     
     // clears state so that search results are cleared when you navigate to different pages on the navbar
-    useEffect(() => {
-        try {
-            props.setApiResponse([])
-            props.setArtistApiResponse([])
-            props.setInputValue("")
-            props.setSearch("")
-            props.setArtist("")
-        }catch (err) {
-            console.warn(err)
-            if (err.response) {
-                setErrorMessage(err.response.data.message)
-            }
-        }
-    }, [])
+    // useEffect(() => {
+    //     try {
+    //         props.setApiResponse([])
+    //         props.setArtistApiResponse([])
+    //         props.setInputValue("")
+    //         props.setSearch("")
+    //         props.setArtist("")
+    //     }catch (err) {
+    //         console.warn(err)
+    //         if (err.response) {
+    //             setErrorMessage(err.response.data.message)
+    //         }
+    //     }
+    // }, [])
+
+    useEffect(()=> {
+        setForm
+    })
     
     const handleSubmit = async (e) => {
         try {
@@ -42,33 +46,26 @@ export default function NewPost (props) {
             }
         }
     }
+
+    console.log(props.track)
     
     return (
        
-        <div class="flex-col w-1/2 mx-auto">
-            {/* need to add submit button and handler */}
-            <form onSubmit={handleSubmit}>
+        <div className="flex-col w-1/2 mx-auto">
+            <form onSubmit={handleSubmit()}>
                 <div >
                     <label htmlFor="songTitle">Song Title:</label>
                     <input type="text" 
                         id="songTitle" 
                         value={`${props.track.track.name}`} 
-                        disabled class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-                        focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                        invalid:border-pink-500 invalid:text-pink-600
-                        focus:invalid:border-pink-500 focus:invalid:ring-pink-500">
+                        className='formInputs'>
                     </input>
                     <br></br>
                     <label htmlFor="songArtist">Artist:</label>
                     <input type="text" 
                         id="songArtist" 
                         value={`${props.track.track.artist}`} 
-                        disabled class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-                        focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                        invalid:border-pink-500 invalid:text-pink-600
-                        focus:invalid:border-pink-500 focus:invalid:ring-pink-500">
+                        className="formInputs">
                     </input>
                     <br></br>
                     <label htmlFor="songRating">Rating:</label>
@@ -78,27 +75,28 @@ export default function NewPost (props) {
                         max="10"
                         onChange={(e) => setForm({...form, rating: e.target.value})}
                         placeholder="Rate the song 1-10"
-                        class="mt-1 block w-full px-3 py-2 bg-white border 
-                        caret-sky-500 border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-                        focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                        invalid:border-pink-500 invalid:text-red-600
-                        focus:invalid:border-pink-500 focus:invalid:ring-red-500">
+                        className="formInputs">
                     </input>
                     <br></br>
                     <label htmlFor="songBlurb">Blurb:</label>
-                    <input type="text" 
+                    <textarea 
+                    type='text' 
+                    name="blurb" 
+                    id="blurb" 
+                    cols="100" 
+                    rows="5" 
+                    onChange={(e) => setForm({...form, blurb: e.target.value})} 
+                    className="formInputs">
+
+                    </textarea>
+                    {/* <input type="textaria" 
                         id="blurb"
                         onChange={(e) => setForm({...form, blurb: e.target.value})}
-                        class="mt-1 block w-full px-3 py-2 bg-white border caret-sky-500 border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-                        focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                        invalid:border-pink-500 invalid:text-red-600
-                        focus:invalid:border-pink-500 focus:invalid:ring-red-500">
-                    </input>
+                        className="formInputs">
+                    </input> */}
                 </div>
                 <br></br>
-                <button type="submit" class="ml-2 p-3 bg-blue-600 rounded-md">Post Song!</button>
+                <button type="submit" className="ml-2 p-3 bg-blue-600 rounded-md">Post Song!</button>
             </form>
          
         </div>
