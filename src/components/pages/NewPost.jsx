@@ -32,8 +32,8 @@ export default function NewPost (props) {
     
 
     useEffect(()=> {
-        type === 'track'? setForm({title: props.track.track.name, artist: props.track.track.artist}) : 
-        setForm({title: null, artist: props.artist.artist.name})
+        type === 'track'? setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id }) : 
+        setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id})
         
     }, [props.setArtist, props.setTrack])
     
@@ -136,10 +136,22 @@ export default function NewPost (props) {
 
     )
 
+    const handleTypeArtist = () => {
+
+    }
+
+    const handleTypeTrack = () => {
+        
+    }
+
     
     return (
        
         <div className="flex-col w-1/2 mx-auto">
+            <div>
+            <button className={`w-fit h-fit ml-2 p-3 ${type==='track'? 'bg-blue-800' : 'bg-blue-600'} rounded-md`} onClick={handleTypeTrack}>SONG</button>
+            <button className={`w-fit h-fit ml-2 p-3 ${type==='artist'? 'bg-blue-800' : 'bg-blue-600'} rounded-md`} onClick={handleTypeArtist}>ARTIST</button>
+            </div>
             {type === 'track'? trackForm : albumForm}
          
         </div>

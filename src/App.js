@@ -39,6 +39,7 @@ function App() {
   const [artist, setArtist] = useState("")
   const [trending, setTrending] = useState([])
   const [track, setTrack] = useState({})
+  const [postType, setPostType] = useState('')
   
 
   // useEffect -- if the user navigates away form the page, we will log them back in
@@ -62,6 +63,10 @@ function App() {
       // set the user in the App state to be null
       setCurrentUser(null)
     }
+  }
+
+  const handlePostType = (e) => {
+    setPostType(e.target.value)
   }
 
   useEffect(() => {
@@ -197,7 +202,7 @@ function App() {
             path='/post/new/:type'
 
             element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} track={track} artist={artist} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
-
+            postInfo={[{handlePostType}, {postType}]}
             />
 
           <Route 
