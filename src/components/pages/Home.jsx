@@ -42,12 +42,27 @@ export default function Home (props) {
 
         return (
             
-            <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl ">
-                <div className='text-left p-4 h-fit w-fit font-bold'>
-                <Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
-                <p>Rating: {post.rating}</p>
+            <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
+                <div className='p-4 h-fit w-fit font-bold object-center mx-auto'>
+                <p className="text-left"> @username </p>
+                <table class="table-auto border-separate border-spacing-4 border rounded-lg">
+                    <thead>
+                        <tr>
+                        <th className="border-2 border-blue-400 rounded-full text-center">Song</th>
+                        <th className="border-2 border-blue-800 rounded-full text-center">Artist</th>
+                        <th className="border-2 border-blue-600 rounded-full text-center">Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="text-left">
+                        <td>{post.title}</td>
+                        <td>{post.artist}</td>
+                        <td>{post.rating}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <p>Blurb: {post.blurb}</p>
-                <p>hi{username}</p>
+                <Link to={`/post/${post._id}`} className="bg-sky-500 hover:bg-sky-700 rounded-lg p-1 m-2">Expand Post</Link>
                 </div>
             </div>
         )
