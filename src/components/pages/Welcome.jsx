@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 
 export default function Welcome(props) {
 	const [errorMessage, setErrorMessage] = useState("")
+
+	// clears state so that search results are cleared when you navigate to different pages on the navbar
 	useEffect(() => {
         try {
             props.setApiResponse([])

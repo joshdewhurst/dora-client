@@ -8,6 +8,7 @@ export default function Home (props) {
     const [users, setUsers] = useState([])
     // const [username, setUsername] = useState([])
 
+    // clears state so that search results are cleared when you navigate to different pages on the navbar
     useEffect(() => {
         try {
             props.setApiResponse([])

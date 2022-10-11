@@ -41,6 +41,7 @@ export default function Media (props) {
         mediaSearch()
     }, [])
 
+    // formatting the numbers to show commas in the correct spots
     const songParse = parseFloat(media.listeners)
     const songListens = songParse.toLocaleString("en-US")
     const artistParse = parseFloat(singer.listeners)
@@ -64,12 +65,14 @@ export default function Media (props) {
                 <p>{singer.name}</p>
                 <p>Artist Listens: {artistListens}</p>
             </div>
+            {/* conditional rendering because not all of the songs have pictures */}
             {image ? 
                 <div>
                     <img class="mx-auto" src={image} alt={`${media.name} album cover`}></img>
+                </div> : 
+                <div> 
                 </div>
-                :
-                <div></div>}
+            }
             
         </div>
     )
