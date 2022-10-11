@@ -32,7 +32,7 @@ export default function Search (props) {
                         <h2>Artist: {track.artist}</h2>
                     </div>
                     <div className='bg-blue-600 w-fit mx-auto p-2 rounded-md font-bold my-2 text-white'>
-                        <Link to="/post/new"><button onClick={() => props.setTrack({ track })}>POST SONG</button></Link>
+                        <Link to="/post/new/track"><button onClick={() => props.setTrack({ track })}>POST SONG</button></Link>
                     </div>
             </div>
     </div>
@@ -45,7 +45,7 @@ export default function Search (props) {
                 <div className=' text-white text-left font-bold w-full bg-blue-900 p-8 rounded-3xl'>
                     <h1>{artist.name}</h1>
                     <div className='bg-blue-600 w-fit mx-auto p-2 rounded-md font-bold my-2 text-white'>
-                        <Link to="/post/new"><button onClick={() => props.setArtist({artist})}>POST SONG</button></Link>
+                        <Link to="/post/new/artist"><button onClick={() => props.setArtist({artist})}>POST ARTIST</button></Link>
                     </div>
                 </div>
 

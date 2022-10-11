@@ -154,11 +154,13 @@ function App() {
             <Loading />}
             />
 
-          <Route 
+          {/* this is handled in home */}
+          
+          {/* <Route 
             path='/post'
             element={currentUser ? <Posts handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
             apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
-            />
+            /> */}
 
           <Route 
             path='/post/:id'
@@ -185,7 +187,7 @@ function App() {
           
 
           <Route 
-            path='/post/new'
+            path='/post/new/:type'
 
             element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} track={track} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
 
