@@ -7,6 +7,22 @@ export default function Posts (props) {
     const [errorMessage, setErrorMessage] = useState("")
 
     useEffect(() => {
+        try {
+            props.setApiResponse([])
+            props.setArtistApiResponse([])
+            props.setInputValue("")
+            props.setArtistInputValue("")
+            props.setSearch("")
+            props.setArtist("")
+        }catch (err) {
+            console.warn(err)
+            if (err.response) {
+                setErrorMessage(err.response.data.message)
+            }
+        }
+    }, [])
+
+    useEffect(() => {
         const getPosts = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)
