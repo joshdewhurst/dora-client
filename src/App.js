@@ -8,6 +8,7 @@ import {
 import { useState, useEffect } from 'react'
 import Login from './components/pages/Login'
 import Profile from './components/pages/Profile'
+import EditProfile from './components/pages/EditProfile'
 import Register from './components/pages/Register'
 import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
@@ -143,6 +144,12 @@ function App() {
           <Route 
             path="/profile"
             element={currentUser ? <Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
+            apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} search={search} setSearch={setSearch} setArtist={setArtist}/> : <Navigate to="/login" />}
+          />
+
+          <Route 
+            path="/profile/:userId/edit"
+            element={currentUser ? <EditProfile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
             apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} search={search} setSearch={setSearch} setArtist={setArtist}/> : <Navigate to="/login" />}
           />
 
