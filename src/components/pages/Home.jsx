@@ -62,28 +62,36 @@ export default function Home (props) {
             
             <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
                 <div className='p-4 h-fit w-fit font-bold object-center mx-auto'>
-                <p className="text-left"> @username </p>
-                <p>posted: {date}</p>
-                <table className="table-auto border-separate border-spacing-4 border rounded-lg">
-                    <thead>
-                        <tr>
-                        <th className="border-2 border-blue-400 rounded-full text-center p-1">Song</th>
-                        <th className="border-2 border-blue-800 rounded-full text-center">Artist</th>
-                        <th className="border-2 border-blue-600 rounded-full text-center">Rating</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="text-left">
-                        <td>{post.title}</td>
-                        <td>{post.artist}</td>
-                        <td>{post.rating}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <p className="text-center">Blurb: {post.blurb}</p>
+                <div className="basis-1/4">
+                    <p className="text-left"> @username </p>
                 </div>
-                <Link to={`/post/${post._id}`} className="bg-sky-500 hover:bg-sky-700 rounded-lg p-1 m-2">Expand Post</Link>
+                <div>
+                    <p className="text-sm basis-1/2">posted: {date}</p>
+                </div>
+                <div className="basis-3/4">
+                    <table className="table-auto border-separate border-spacing-4 border rounded-lg">
+                        <thead>
+                            <tr>
+                            <th className="border-2 border-blue-400 rounded-full text-center p-1">Song</th>
+                            <th className="border-2 border-blue-800 rounded-full text-center">Artist</th>
+                            <th className="border-2 border-blue-600 rounded-full text-center">Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="text-left">
+                            <td>{post.title}</td>
+                            <td>{post.artist}</td>
+                            <td>{post.rating}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <p className="text-center basis-3/4">Blurb: {post.blurb}</p>
+                </div>
+                <div>
+                    <Link to={`/post/${post._id}`} className="bg-sky-500 hover:bg-sky-700 rounded-lg p-1 m-2 basis 1/4">Expand Post</Link>
+                </div>
                 </div>
             </div>
         )
