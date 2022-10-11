@@ -4,10 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 
 export default function EditProfile(props) {
-    const [name, setName] = useState('')
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
+    const [name, setName] = useState(`${props.currentUser.name}`)
+    const [username, setUsername] = useState(`${props.currentUser.username}`)
+    const [email, setEmail] = useState(`${props.currentUser.email}`)
     const [password, setPassword] = useState('')
+    const [newPassword, setNewPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
     const { userId } = useParams()
@@ -116,12 +117,26 @@ export default function EditProfile(props) {
 						<input 
 							type="password"
 							id="password"
-							placeholder='password...'
+							placeholder="******"
 							onChange={e => setPassword(e.target.value)}
 							value={password}
 						/>
 					</div>
 				</div>	
+                {/* <div className='flex justify-around'>
+					<div className='w-1/2'>
+						<label htmlFor='newPassword'>New Password:</label>
+					</div>
+					<div className='w-fit'> 
+						<input 
+							type="newPassword"
+							id="newPassword"
+							placeholder="Enter new password..."
+							onChange={e => setNewPassword(e.target.value)}
+							value={newPassword}
+						/>
+					</div>
+				</div>	 */}
 				<button type="submit">Edit</button>
 			</form>
 		</div>

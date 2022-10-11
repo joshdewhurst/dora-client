@@ -56,6 +56,16 @@ export default function Post (props) {
     return (
         <div>
             <br></br>
+            <div className="flex ml-80 text-2xl">
+                <Link to={`/posts`} className="underline hover:no-underline
+                   text-blue-600 hover:text-blue-800 
+                   visited:text-purple-600">
+                    Your Posts
+                </Link>
+            </div>
+          
+            <br></br>
+            <div className="text-4xl">Your Post!</div>
             <div className="bg-red-600 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
                 <h1>Song Post</h1>
                 <h2>Title: {post.title}</h2>
