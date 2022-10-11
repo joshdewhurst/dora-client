@@ -8,6 +8,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [username, setUsername] = useState('')
 	const [msg, setMsg] = useState('')
 
 	// submit event handler
@@ -18,12 +19,14 @@ export default function Register({ currentUser, setCurrentUser }) {
 			const reqBody = {
 				name,
 				email, 
-				password
+				password,
+				username
 			}
 			const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, reqBody)
 
 			// save the token in localstorage
 			const { token } = response.data
+			console.log("register token", token)
 			localStorage.setItem('jwt', token)
 
 			// decode the token
@@ -63,6 +66,21 @@ export default function Register({ currentUser, setCurrentUser }) {
 							placeholder='your username...'
 							onChange={e => setName(e.target.value)}
 							value={name}
+						/>
+					</div>
+				</div>
+
+				<div className='flex justify-around '>
+					<div className='w-1/2'>
+						<label htmlFor='username'>Username:</label>
+					</div>
+					<div className='w-fit'>
+						<input 
+							type="text"
+							id="username"
+							placeholder='your email...'
+							onChange={e => setUsername(e.target.value)}
+							value={username}
 						/>
 					</div>
 				</div>

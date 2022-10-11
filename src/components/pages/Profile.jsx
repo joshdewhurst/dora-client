@@ -103,7 +103,7 @@ const userPosts = posts.map((post) => {
 				<div className='w-2/3 p-8 mt-24 text-white text-left font-bold uppercase bg-blue-900 rounded-3xl h-fit'>
 						<h1 className='text-5xl'>Welcome,<br/> {currentUser.name}</h1>
 						<p className='text-3xl'>Email: {currentUser.email}</p>
-						<button className='mt-3 p-3 bg-blue-600 rounded-md'>Edit Profile</button>
+						<Link to={`/profile/${currentUser.id}/edit`}><button className='mt-3 p-3 bg-blue-600 rounded-md'>Edit Profile</button></Link>
 				</div>
 			</div>
 			<div className='w-full flex justify-start'>

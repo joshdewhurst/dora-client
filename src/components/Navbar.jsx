@@ -1,3 +1,5 @@
+import userEvent from '@testing-library/user-event'
+import PreviousMap from 'postcss/lib/previous-map'
 import { Link, BrowserRouter } from 'react-router-dom'
 
 export default function Navbar({ currentUser, handleLogout }) {
@@ -7,7 +9,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 			<Link to='/trending'>Trending</Link> { " | "}
 			<Link to='/search'>Search</Link> { " | "}
 			{/* if the user is logged in... */}
-			<Link to="/profile">Profile</Link>
+			<Link to={`/profile/`}>Profile</Link>
 			<Link className='ml-12' to="/"> <span onClick={handleLogout}>Logout</span> </Link> 
 		</div>
 	 )
