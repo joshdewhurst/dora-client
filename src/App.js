@@ -39,7 +39,6 @@ function App() {
   const [artist, setArtist] = useState("")
   const [trending, setTrending] = useState([])
   const [track, setTrack] = useState({})
-  const [postType, setPostType] = useState('')
   
 
   // useEffect -- if the user navigates away form the page, we will log them back in
@@ -63,10 +62,6 @@ function App() {
       // set the user in the App state to be null
       setCurrentUser(null)
     }
-  }
-
-  const handlePostType = (e) => {
-    setPostType(e.target.value)
   }
 
   useEffect(() => {
@@ -161,7 +156,7 @@ function App() {
           <Route 
             path='/search'
             element={currentUser ? <Search handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} 
-            artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} inputValue={inputValue} setInputValue={setInputValue} setSearch={setSearch} setTrack={setTrack} setArtist={setArtist}/> : 
+            artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} inputValue={inputValue} setInputValue={setInputValue} setSearch={setSearch} setTrack={setTrack} setArtist={setArtist} /> : 
             // rendering a loading page for the time a currentUser is: null
             <Loading />}
             />
@@ -196,13 +191,19 @@ function App() {
             path='/media/:name/:artist'
             element={currentUser ? <Media handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
             />
+
+          <Route
+          path='/post/new'
+          element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} track={track} artist={artist} setSearch={setSearch} setArtist={setArtist} /> : <Loading />}
+
+          />
           
 
           <Route 
             path='/post/new/:type'
 
-            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} track={track} artist={artist} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
-            postInfo={[{handlePostType}, {postType}]}
+            element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} track={track} artist={artist} setSearch={setSearch} setArtist={setArtist} /> : <Loading />}
+           
             />
 
           <Route 
