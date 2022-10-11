@@ -6,6 +6,7 @@ export default function Home (props) {
     const [posts, setPosts] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
     const [users, setUsers] = useState([])
+    // const [username, setUsername] = useState([])
 
     useEffect(() => {
         const getPosts = async () => {
@@ -31,25 +32,29 @@ export default function Home (props) {
 
 
     const allPosts = posts.map((post) => {
-
-        let getUserInfo = axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${post.user}`)
-        .then (response => {
-            getUserInfo= response.data.name
             
-            return getUserInfo});
-            console.log(getUserInfo)
+        let username
+        const getUsername = async () => {
+            try {
+                const getUserInfo = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${post.user}`)
+                let username = getUserInfo.data.name
+            } catch(err) {
+                console.warn(err)
+            }
+        }
 
-        return(
+        return (
             
-                <div key={`${post._id}`} className="border-2 mx-auto my-2 w-64 border-blue-900">
-                    <div className="font-mono">
-                    <Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
-                    <p>Rating: {post.rating}</p>
-                    <p>Blurb: {post.blurb}</p>
-                    {getUserInfo}
-                    </div>
+            <div key={`${post._id}`} className="border-2 mx-auto my-2 w-64 border-blue-900">
+                <div className="font-mono">
+                <Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
+                <p>Rating: {post.rating}</p>
+                <p>Blurb: {post.blurb}</p>
+                <p>hi{username}</p>
+                {getUsername}
                 </div>
-            )
+            </div>
+        )
         } )
     
     return (
