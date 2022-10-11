@@ -48,20 +48,23 @@ export default function Home (props) {
 
 
     const allPosts = posts.map((post) => {
-            
-        let username
-        const getUserInfo = axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${post.user}`)
-        .then ((response) => {
-            console.log(response.data.name)
-            username = response.data.name
-        })
+
+        // const getUserInfo = axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${post.user}`)
+        // .then ((response) => {
+        //     console.log(response.data.name)
+        //     username = response.data.name
+        // })
+
+        const postedAt = new Date( post.createdAt )
+        let date = postedAt.toLocaleString();
 
         return (
             
             <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
                 <div className='p-4 h-fit w-fit font-bold object-center mx-auto'>
                 <p className="text-left"> @username </p>
-                <table class="table-auto border-separate border-spacing-4 border rounded-lg">
+                <p>posted: {date}</p>
+                <table className="table-auto border-separate border-spacing-4 border rounded-lg">
                     <thead>
                         <tr>
                         <th className="border-2 border-blue-400 rounded-full text-center p-1">Song</th>
