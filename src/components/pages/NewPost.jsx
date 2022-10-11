@@ -14,6 +14,8 @@ export default function NewPost (props) {
     const navigate = useNavigate()
     const { type } = useParams()
 
+    console.log('props info', props.postInfo)
+
     // clears state so that search results are cleared when you navigate to different pages on the navbar
     // useEffect(() => {
     //     try {
@@ -32,8 +34,7 @@ export default function NewPost (props) {
     
 
     useEffect(()=> {
-        type === 'track'? setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id }) : 
-        setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id})
+        type === 'track'? setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id }) : setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id})
         
     }, [props.setArtist, props.setTrack])
     
@@ -144,7 +145,7 @@ export default function NewPost (props) {
         
     }
 
-    
+     
     return (
        
         <div className="flex-col w-1/2 mx-auto">
