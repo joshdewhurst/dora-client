@@ -168,11 +168,11 @@ function App() {
 
           {/* this is handled in home */}
           
-          {/* <Route 
-            path='/post'
+          <Route 
+            path='/posts'
             element={currentUser ? <Posts handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
             apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
-            /> */}
+            />
 
           <Route 
             path='/post/:id'
