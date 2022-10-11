@@ -9,22 +9,6 @@ export default function Home (props) {
     // const [username, setUsername] = useState([])
 
     useEffect(() => {
-        try {
-            props.setApiResponse([])
-            props.setArtistApiResponse([])
-            props.setInputValue("")
-            props.setArtistInputValue("")
-            props.setSearch("")
-            props.setArtist("")
-        }catch (err) {
-            console.warn(err)
-            if (err.response) {
-                setErrorMessage(err.response.data.message)
-            }
-        }
-    }, [])
-
-    useEffect(() => {
         const getPosts = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)
@@ -47,29 +31,23 @@ export default function Home (props) {
 
 
 
-
-
     const allPosts = posts.map((post) => {
             
         let username
-        const getUsername = async () => {
-            try {
-                const getUserInfo = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${post.user}`)
-                let username = getUserInfo.data.name
-            } catch(err) {
-                console.warn(err)
-            }
-        }
+        const getUserInfo = axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${post.user}`)
+        .then ((response) => {
+            console.log(response.data.name)
+            username = response.data.name
+        })
 
         return (
             
-            <div key={`${post._id}`} className="border-2 mx-auto my-2 w-64 border-blue-900">
-                <div className="font-mono">
+            <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl ">
+                <div className='text-left p-4 h-fit w-fit font-bold'>
                 <Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
                 <p>Rating: {post.rating}</p>
                 <p>Blurb: {post.blurb}</p>
                 <p>hi{username}</p>
-                {getUsername}
                 </div>
             </div>
         )
