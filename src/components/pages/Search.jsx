@@ -1,43 +1,38 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Search (props) {
-    const [state, setState] = useState({})
-    const [errorMessage, setErrorMessage] = useState('')
+    // const [state, setState] = useState({})
+    // const [errorMessage, setErrorMessage] = useState('')
     const [searchType, setSearchType] = useState('song')
 
     // clears state so that search results are cleared when you navigate to different pages on the navbar
-    useEffect(() => {
-        try {
-            props.setApiResponse([])
-            props.setArtistApiResponse([])
-            props.setInputValue("")
-            props.setSearch("")
-            props.setArtist("")
-        }catch (err) {
-            console.warn(err)
-            if (err.response) {
-                setErrorMessage(err.response.data.message)
-            }
-        }
-    }, [])
+    // useEffect(() => {
+    //     try {
+    //         props.setApiResponse([])
+    //         props.setArtistApiResponse([])
+    //         props.setInputValue("")
+    //         props.setSearch("")
+    //         props.setArtist("")
+    //     }catch (err) {
+    //         console.warn(err)
+    //         if (err.response) {
+    //             setErrorMessage(err.response.data.message)
+    //         }
+    //     }
+    // }, [])
 
     const trackList = props.apiResponse.map((track, i) => {
         
         return (
-            <div key={`track${i}`} className="my-4 flex p-4">
-                <div className='w-1/3 flex justify-center pr-3'>
-                    <img className='rounded-full' src={track.image[1]['#text']} alt={track.name} />
-
-                </div>
-                <div className='w-2/3 bg-blue-900 p-4 rounded-r-full'>
-                    <div className='w-3/4 mx-auto text-white text-left font-bold'>
+            <div key={`track${i}`} className="my-4 flex p-4 w-1/3 mx-auto ">
+                <div className='w-full bg-blue-900 p-8 rounded-3xl'>
+                    <div className=' text-white text-left font-bold'>
                         <h1 className='uppercase'>{track.name}</h1>
                         <h2>Artist: {track.artist}</h2>
                     </div>
-                    {/* images are rendering images of stars */}
                     <div className='bg-blue-600 w-fit mx-auto p-2 rounded-md font-bold my-2 text-white'>
-                        <Link to="/post/new"><button onClick={() => props.setTrack({ track })}>POST SONG</button></Link>
+                        <Link to="/post/new/track"><button onClick={() => props.setTrack({ track })}>POST SONG</button></Link>
                     </div>
             </div>
     </div>
@@ -46,8 +41,14 @@ export default function Search (props) {
 
     const artistList = props.artistApiResponse.map((artist, i) => {
         return (
-            <div key={`artist${i}`}>
-            <h1>{artist.name}</h1>
+            <div key={`artist${i}`} className="my-4 flex p-4 w-1/3 mx-auto">
+                <div className=' text-white text-left font-bold w-full bg-blue-900 p-8 rounded-3xl'>
+                    <h1>{artist.name}</h1>
+                    <div className='bg-blue-600 w-fit mx-auto p-2 rounded-md font-bold my-2 text-white'>
+                        <Link to="/post/new/artist"><button onClick={() => props.setArtist({artist})}>POST ARTIST</button></Link>
+                    </div>
+                </div>
+
             </div>
         )
     })  
