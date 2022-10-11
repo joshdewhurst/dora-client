@@ -143,7 +143,7 @@ function App() {
           <Route 
             path="/profile"
             element={currentUser ? <Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
-            apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Navigate to="/login" />}
+            apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} search={search} setSearch={setSearch} setArtist={setArtist}/> : <Navigate to="/login" />}
           />
 
           <Route 

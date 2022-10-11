@@ -18,7 +18,6 @@ export default function NewPost (props) {
             props.setApiResponse([])
             props.setArtistApiResponse([])
             props.setInputValue("")
-            props.setArtistInputValue("")
             props.setSearch("")
             props.setArtist("")
         }catch (err) {

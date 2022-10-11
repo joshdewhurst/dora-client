@@ -9,7 +9,6 @@ export default function Trending(props) {
             props.setApiResponse([])
             props.setArtistApiResponse([])
             props.setInputValue("")
-            props.setArtistInputValue("")
             props.setSearch("")
             props.setArtist("")
         }catch (err) {

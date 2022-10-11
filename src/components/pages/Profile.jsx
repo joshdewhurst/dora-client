@@ -8,6 +8,20 @@ export default function Profile({ currentUser, handleLogout, props }) {
 	// Setting other states
 	const [posts, setPosts] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
+	useEffect(() => {
+        try {
+            props.setApiResponse([])
+            props.setArtistApiResponse([])
+            props.setInputValue("")
+            props.setSearch("")
+            props.setArtist("")
+        }catch (err) {
+            console.warn(err)
+            if (err.response) {
+                setErrorMessage(err.response.data.message)
+            }
+        }
+    }, [])
 
 	// useEffect for getting the user data and checking auth
 	useEffect(() => {
@@ -64,7 +78,7 @@ const userPosts = posts.map((post) => {
 		  
 		return(
 		
-			<div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl ">
+			<div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl">
 			
 				<div className='text-left p-4 h-fit w-fit font-bold'>
 					<Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>

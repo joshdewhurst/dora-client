@@ -7,7 +7,6 @@ export default function Welcome(props) {
             props.setApiResponse([])
 			props.setArtistApiResponse([])
 			props.setInputValue("")
-            props.setArtistInputValue("")
             props.setSearch("")
             props.setArtist("")
         }catch (err) {

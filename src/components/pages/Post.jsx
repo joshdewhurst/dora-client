@@ -13,7 +13,6 @@ export default function Post (props) {
             props.setApiResponse([])
             props.setArtistApiResponse([])
             props.setInputValue("")
-            props.setArtistInputValue("")
             props.setSearch("")
             props.setArtist("")
         }catch (err) {
@@ -55,7 +54,8 @@ export default function Post (props) {
     }
     return (
         <div>
-            <div>
+            <br></br>
+            <div className="bg-red-600 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
                 <h1>Song Post</h1>
                 <h2>Title: {post.title}</h2>
                 <h2>Artist: {post.artist}</h2>
@@ -64,9 +64,9 @@ export default function Post (props) {
             </div>
             <div>
                 <Link to={`/post/${id}/edit`}>
-                    <button class="ml-2 p-3 bg-blue-600 rounded-md">Edit Post</button>
+                    <button class="ml-2 p-3 bg-blue-600 rounded-md text-white">Edit Post</button>
                 </Link>
-                <button onClick={deletePost} class="ml-2 p-3 bg-blue-600 rounded-md">Delete Post</button>
+                <button onClick={deletePost} class="ml-2 p-3 bg-blue-600 rounded-md text-white">Delete Post</button>
             </div>
            
         </div>
