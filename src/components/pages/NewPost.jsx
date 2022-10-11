@@ -30,7 +30,7 @@ export default function NewPost (props) {
     // }, [])
 
     useEffect(()=> {
-        setForm
+        // setForm
     })
     
     const handleSubmit = async (e) => {
@@ -52,7 +52,7 @@ export default function NewPost (props) {
     return (
        
         <div className="flex-col w-1/2 mx-auto">
-            <form onSubmit={handleSubmit()}>
+            <form onSubmit={handleSubmit}>
                 <div >
                     <label htmlFor="songTitle">Song Title:</label>
                     <input type="text" 
