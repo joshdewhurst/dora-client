@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 
 export default function EditProfile(props) {
     const [name, setName] = useState('')
@@ -38,6 +39,11 @@ export default function EditProfile(props) {
                 username
             }
             const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/profile/${userId}/edit`, reqBody)
+            const { token }  = response.data
+            console.log("token", token )
+            localStorage.setItem("jwt", token)
+            const decoded = jwt_decode(token)
+            props.setCurrentUser(decoded)
            
             navigate(`/profile`)
 

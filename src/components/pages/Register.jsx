@@ -26,6 +26,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 
 			// save the token in localstorage
 			const { token } = response.data
+			console.log("register token", token)
 			localStorage.setItem('jwt', token)
 
 			// decode the token
