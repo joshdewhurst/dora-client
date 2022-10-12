@@ -25,18 +25,18 @@ export default function Profile({ currentUser, handleLogout, props }) {
         }
     }, [])
 
+	const options = {
+		headers: {
+			'authorization': localStorage.getItem('jwt'),
+			'Accept' : 'application/json',
+			'Content-Type': 'application/json'
+		}
+	}
+
 	// useEffect for getting the user data and checking auth
 	useEffect(() => {
 	const fetchData = async () => {
 			try {
-				// get the token from local storage
-				const token = localStorage.getItem('jwt')
-				// make the auth headers
-				const options = {
-					headers: {
-						'Authorization': token
-					}
-				}
 				// hit the auth locked endpoint
 				const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, options)
 				// example POST with auth headers (options are always last argument)
@@ -62,7 +62,7 @@ export default function Profile({ currentUser, handleLogout, props }) {
 useEffect(() => {
 	const getPosts = async () => {
 		try {
-			const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)
+			const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`, options)
 			console.log(response.data)
 			setPosts(response.data)
 		} catch (err) {
@@ -75,42 +75,31 @@ useEffect(() => {
 	getPosts()
 }, [])
 
-// const userPosts = posts.map((post) => {
-// 	if (post.user === currentUser.id) {
-		  
-// 		return(
-		
-// 			<div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl">
-			
-// 				<div className='text-left p-4 h-fit w-fit font-bold'>
-// 					<Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
-// 					<p>Rating: {post.rating}</p>
-// 				</div>
-// 				<div className='text-left p-4 bg-blue-800 rounded-3xl'>
-// 					<p>{post.blurb}</p>
-// 				</div>
-				
-// 			</div>
-// 		)
-// 	} 
-// })
-
-
-
 	return (
-		<div className='flex h-84 flex-row  mx-auto'>
-			<div className='w-2/5 flex justify-end'>
-				<div className='w-2/3 p-8 mt-24 text-white text-left font-bold uppercase bg-blue-900 rounded-3xl h-fit'>
-						<h1 className='text-5xl'>Welcome,<br/> {currentUser.name}</h1>
-						<p className='text-3xl'>Email: {currentUser.email}</p>
-						<Link to={`/profile/${currentUser.id}/edit`}><button className='mt-3 p-3 bg-blue-600 rounded-md'>Edit Profile</button></Link>
+		<div className="bg-yellow-400 drop-shadow-2xl p-12 rounded-md mt-12 flex flex-col text-white text-2xl w-2/3 mx-auto">
+				<div className='flex w-1/2 text-3xl font-bold flex-col p-2'>
+					<h3 className='w-fit drop-shadow-lg'>{currentUser.username}</h3>
 				</div>
-			</div>
-			<div className='w-full flex ml-24'>
-				<div className='w-1/3 p-8 mt-24 text-white font-bold uppercase bg-blue-900 rounded-3xl h-fit'>
-					<Link to={"/posts"}><button className='mt-3 p-3 bg-blue-600 rounded-md'>Your Posts</button></Link>
+			<div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-white  font-bold p-2">
+				<div className='flex w-1/2 flex-col p-2'>
+					<p className="mb-2 border-b-4 border-green-400">Name</p>
+					{currentUser.name}
 				</div>
+				<div className='flex w-1/2 flex-col p-2'>
+					<p className="mb-2 border-b-4 border-yellow-400">Email</p>
+					{currentUser.email}
+				</div>	
 			</div>
+			<div className="p-4 bg-blue-900 rounded-b-md">
+					<h1 className='text-2xl font-bold'>Profile - See your posts and edit your account!</h1>
+					<p>{msg}</p>
+					
+				</div>
+				<div className='mt-8 flex justify-between w-1/2 mx-auto'>
+					<Link to={`/profile/${currentUser.id}/edit`}><button className="bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Edit Profile</button></Link>
+					<Link to={"/posts"}><button className="bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Your Posts</button></Link>
+
+				</div>
 		</div>
 	)
 }

@@ -8,6 +8,14 @@ export default function Post (props) {
     const { id } = useParams()
     const navigate = useNavigate()
 
+    const options = {
+		headers: {
+			'authorization': localStorage.getItem('jwt'),
+			'Accept' : 'application/json',
+			'Content-Type': 'application/json'
+		}
+	}
+
         // clears state so that search results are cleared when you navigate to different pages on the navbar
     useEffect(() => {
         try {
@@ -27,7 +35,7 @@ export default function Post (props) {
     useEffect(() => {
         const getPost = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`)
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`, options)
                 console.log("RESPONSEDATA", response.data)
                 setPost(response.data)
             } catch (err) {
@@ -42,7 +50,7 @@ export default function Post (props) {
 
     const deletePost = async () => {
         try {
-            await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`)
+            await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`, options)
             navigate("/posts")
             
 

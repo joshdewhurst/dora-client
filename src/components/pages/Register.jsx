@@ -10,6 +10,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 	const [password, setPassword] = useState('')
 	const [username, setUsername] = useState('')
 	const [msg, setMsg] = useState('')
+	
 
 	// submit event handler
 	const handleSubmit = async e => {
@@ -49,73 +50,42 @@ export default function Register({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div>
-			<h1 className='text-2xl font-bold'>Register for an account:</h1>
-
-			<p>{msg}</p>
-
-			<form className='text-3xl w-1/3 mx-auto' onSubmit={handleSubmit}>
-				<div className='flex justify-around '>
-					<div className='w-1/2'>
-						<label htmlFor='name'>Name:</label>
+		<div className="bg-blue-700 p-12 rounded-md mt-12 flex flex-col text-white text-2xl w-2/3 mx-auto">
+			<form className='' onSubmit={handleSubmit}>	
+				<div className='font-bold w-1/3  flex flex-row justify-start'>
+				<label className="mb-2"></label>
+						<input className='h-1/3 mb-2 bg-blue-700 ml-2' type="text" id="username" placeholder='username' onChange={e => setUsername(e.target.value)} value={username} />
+					
+				</div>
+				<div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-indigo-200  font-bold p-2">
+					<div className='flex w-1/3 flex-col p-2'>
+						<label className="mb-2 border-b-4 border-green-400">Name</label>
+						<input className='pl-2' type="text" id="name" placeholder='name' onChange={e => setName(e.target.value)} value={name} />
 					</div>
-					<div className='w-fit'>
-						<input 
-							type="text"
-							id="name"
-							placeholder='your username...'
-							onChange={e => setName(e.target.value)}
-							value={name}
-						/>
+
+					<div className='flex w-1/3  flex-col p-2'>
+						<label className="mb-2 border-b-4 border-yellow-400">Email</label>
+						<input className='pl-2' type="email" id="email" placeholder='email' onChange={e => setEmail(e.target.value)} value={email} />
 					</div>
+
+					<div className='flex w-1/3  flex-col p-2'>
+						<label className='mb-2 border-b-4 border-red-400'>Password</label>
+						<input className='pl-2' type="password" id="password" placeholder='password' onChange={e => setPassword(e.target.value)} value={password} />
+					</div>
+
 				</div>
 
-				<div className='flex justify-around '>
-					<div className='w-1/2'>
-						<label htmlFor='username'>Username:</label>
-					</div>
-					<div className='w-fit'>
-						<input 
-							type="text"
-							id="username"
-							placeholder='your email...'
-							onChange={e => setUsername(e.target.value)}
-							value={username}
-						/>
-					</div>
+				<div className="p-4 bg-blue-900 rounded-b-md">
+					<h1 className='text-2xl font-bold'>Register for an account:</h1>
+					<p>{msg}</p>
 				</div>
 
-				<div className='flex justify-around '>
-					<div className='w-1/2'>
-						<label htmlFor='email'>Email:</label>
-					</div>
-					<div className='w-fit'>
-						<input 
-							type="email"
-							id="email"
-							placeholder='your email...'
-							onChange={e => setEmail(e.target.value)}
-							value={email}
-						/>
-					</div>
+				<div className='mt-8 flex justify-center'>
+					<button className="bg-sky-500 hover:bg-sky-700 rounded-md p-2 font-bold" type="submit">Register</button>
 				</div>
 
-				<div className='flex justify-around'>
-					<div className='w-1/2'>
-						<label htmlFor='password'>Password:</label>
-					</div>
-					<div className='w-fit'> 
-						<input 
-							type="password"
-							id="password"
-							placeholder='password...'
-							onChange={e => setPassword(e.target.value)}
-							value={password}
-						/>
-					</div>
-				</div>	
-				<button type="submit">Register</button>
 			</form>
 		</div>
+			
 	)
 }

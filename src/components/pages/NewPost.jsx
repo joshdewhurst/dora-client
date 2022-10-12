@@ -44,11 +44,19 @@ export default function NewPost (props) {
         }
         
     },[props.setArtist, props.setTrack])
+
+    const options = {
+		headers: {
+			'authorization': localStorage.getItem('jwt'),
+			'Accept' : 'application/json',
+			'Content-Type': 'application/json'
+		}
+	}
     
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/new`, form)
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/new`, form, options)
             console.log("posted")
             navigate("/home")
         } catch(err) {
