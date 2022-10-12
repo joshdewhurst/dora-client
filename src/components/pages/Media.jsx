@@ -16,8 +16,8 @@ export default function Media (props) {
     useEffect(() => {
         const mediaSearch = async () => {
             try {
-                const trackSearchUrl =  `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${name}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
-                const artistSearchUrl = `http://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${artist}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+                const trackSearchUrl =  `https://ws.audioscrobbler.com/2.0/?method=track.search&track=${name}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+                const artistSearchUrl = `https://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${artist}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
                 const image = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${process.env.REACT_APP_API_KEY}&artist=${artist}&track=${name}&format=json`
                 const mediaResp = await axios.get(trackSearchUrl)
                 const singerResp = await axios.get(artistSearchUrl)

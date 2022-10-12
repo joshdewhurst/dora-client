@@ -67,7 +67,7 @@ function App() {
   useEffect(() => {
       const trackSearch = async () => {
         try {
-          const trackSearchUrl =  `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${search}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+          const trackSearchUrl =  `https://ws.audioscrobbler.com/2.0/?method=track.search&track=${search}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
           const trackResponse = await axios.get(trackSearchUrl)
           setApiResponse(trackResponse.data.results.trackmatches.track)
         } catch(err) {
@@ -83,7 +83,7 @@ function App() {
   useEffect(() => {
     const artistSearch = async () => {
       try {
-        const artistUrl = `http://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${artist}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
+        const artistUrl = `https://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${artist}&api_key=${process.env.REACT_APP_API_KEY}&format=json`
         const artistResponse = await axios.get(artistUrl)
         setArtistApiResponse(artistResponse.data.results.artistmatches.artist)
       } catch(err) {
