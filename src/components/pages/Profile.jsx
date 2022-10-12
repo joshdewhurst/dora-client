@@ -91,13 +91,13 @@ useEffect(() => {
 				</div>	
 			</div>
 			<div className="p-4 bg-blue-900 rounded-b-md">
-					<h1 className='text-2xl font-bold'>Profile - See your posts and edit your account!</h1>
-					<p>{msg}</p>
+					<h1 className='text-2xl font-bold'>Hello {currentUser.username} - See your posts and edit your account!</h1>
+					
 					
 				</div>
 				<div className='mt-8 flex justify-between w-1/2 mx-auto'>
-					<Link to={`/profile/${currentUser.id}/edit`}><button className="bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Edit Profile</button></Link>
-					<Link to={"/posts"}><button className="bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Your Posts</button></Link>
+					<Link to={`/profile/${currentUser.id}/edit`}><button className="mr-2 bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Edit Profile</button></Link>
+					<Link to={"/posts"}><button className=" ml-2 bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Your Posts</button></Link>
 
 				</div>
 		</div>

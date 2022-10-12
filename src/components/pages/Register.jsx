@@ -53,24 +53,24 @@ export default function Register({ currentUser, setCurrentUser }) {
 		<div className="bg-blue-700 p-12 rounded-md mt-12 flex flex-col text-white text-2xl w-2/3 mx-auto">
 			<form className='' onSubmit={handleSubmit}>	
 				<div className='font-bold w-1/3  flex flex-row justify-start'>
-				<label className="mb-2"></label>
-						<input className='h-1/3 mb-2 bg-blue-700 ml-2' type="text" id="username" placeholder='username' onChange={e => setUsername(e.target.value)} value={username} />
+				<label className="mb-2">Username</label>
+						<input required className='h-1/3 mb-2 bg-blue-700 ml-2' type="text" id="username" placeholder='username' onChange={e => setUsername(e.target.value)} value={username} />
 					
 				</div>
 				<div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-indigo-200  font-bold p-2">
 					<div className='flex w-1/3 flex-col p-2'>
 						<label className="mb-2 border-b-4 border-green-400">Name</label>
-						<input className='pl-2' type="text" id="name" placeholder='name' onChange={e => setName(e.target.value)} value={name} />
+						<input required className='pl-2' type="text" id="name" placeholder='name' onChange={e => setName(e.target.value)} value={name} />
 					</div>
 
 					<div className='flex w-1/3  flex-col p-2'>
 						<label className="mb-2 border-b-4 border-yellow-400">Email</label>
-						<input className='pl-2' type="email" id="email" placeholder='email' onChange={e => setEmail(e.target.value)} value={email} />
+						<input required className='pl-2' type="email" id="email" placeholder='email' onChange={e => setEmail(e.target.value)} value={email} />
 					</div>
 
 					<div className='flex w-1/3  flex-col p-2'>
 						<label className='mb-2 border-b-4 border-red-400'>Password</label>
-						<input className='pl-2' type="password" id="password" placeholder='password' onChange={e => setPassword(e.target.value)} value={password} />
+						<input required className='pl-2' type="password" id="password" placeholder='password' onChange={e => setPassword(e.target.value)} value={password} />
 					</div>
 
 				</div>
