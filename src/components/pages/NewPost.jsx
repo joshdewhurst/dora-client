@@ -34,10 +34,10 @@ export default function NewPost (props) {
 
     useEffect(()=> {
         if(type === 'track') {
-            setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id }) 
+            setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id, username: props.currentUser.username }) 
         }
         if(type === 'artist') {
-            setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id})
+            setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id, username: props.currentUser.username})
         }
         if(type === 'direct') {
             setForm({user: props.currentUser.id})
