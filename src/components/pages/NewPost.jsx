@@ -40,7 +40,7 @@ export default function NewPost (props) {
             setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id, username: props.currentUser.username})
         }
         if(type === 'direct') {
-            setForm({user: props.currentUser.id})
+            setForm({user: props.currentUser.id, username: props.currentUser.username})
         }
         
     },[props.setArtist, props.setTrack])
