@@ -1,8 +1,8 @@
+
+
 import { useEffect, useState } from 'react'
 import axios from "axios"
 import { useNavigate, useParams } from "react-router-dom"
-
-
 
 export default function NewPost (props) {
     const [form, setForm] = useState({
@@ -12,92 +12,38 @@ export default function NewPost (props) {
         blurb: "",
         user: props.currentUser.id
     })
-    const [song, setSong] = useState(()=> {
-        const saved = localStorage.getItem("song")
-        const initialValue = JSON.parse(saved)
-        return initialValue || ""
-    })
-
-    const [artist, setArtist] = useState(()=> {
-        const saved = localStorage.getItem("artist")
-        const initialValue = JSON.parse(saved)
-        return initialValue || ""
-    })
-
     const [showForm, setShowForm] = useState('')
     const [errorMessage, setErrorMessage] = useState("")
     const navigate = useNavigate()
     const { type } = useParams()
 
     // clears state so that search results are cleared when you navigate to different pages on the navbar
-
-
-    useEffect(() => {
-        try {
-            props.setApiResponse([])
-            props.setArtistApiResponse([])
-            props.setInputValue("")
-            props.setSearch("")
-            props.setArtist("")
-        }catch (err) {
-            console.warn(err)
-            if (err.response) {
-                setErrorMessage(err.response.data.message)
-            }
-        }
-    }, [])
-
+    // useEffect(() => {
+    //     try {
+    //         props.setApiResponse([])
+    //         props.setArtistApiResponse([])
+    //         props.setInputValue("")
+    //         props.setSearch("")
+    //         props.setArtist("")
+    //     }catch (err) {
+    //         console.warn(err)
+    //         if (err.response) {
+    //             setErrorMessage(err.response.data.message)
+    //         }
+    //     }
+    // }, [])
     
 
-
-    useEffect(() => {
-        // storing input name
-        const storeSong = () => {
-            if (window.performance.getEntriesByType("navigation")[0].type === "navigation") {
-                setSong(props.track.track.name)
-                localStorage.setItem("song", JSON.stringify(song))
-            } else {
-                localStorage.getItem("song")
-            }
-        }
-        const storeArtist = () => {
-            if (window.performance.getEntriesByType("navigation")[0].type === "navigation"){
-                setArtist(props.track.track.artist)
-                localStorage.setItem("artist", JSON.stringify(artist))
-            } else {
-                localStorage.getItem("artist")
-            }
-        }
-        storeSong()
-        storeArtist()
-
-      }, [song, artist]);
-
-    
-      console.log(window.performance.getEntriesByType("navigation")[0])
     useEffect(()=> {
-        if (window.performance.getEntriesByType("navigation")[0].type === "navigation") {
-            if(type === 'track') {
-                setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id, username: props.currentUser.username }) 
-            }
-            if(type === 'artist') {
-                setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id, username: props.currentUser.username})
-            }
-            if(type === 'direct') {
-                setForm({user: props.currentUser.id, username: props.currentUser.username})
-            }
-        } else {
-            if(type === 'track') {
-                setForm({title: localStorage.getItem("song"), artist: localStorage.getItem("artist"), user: props.currentUser.id, username: props.currentUser.username }) 
-            }
-            if(type === 'artist') {
-                setForm({title: null, artist: localStorage.getItem("artist"), user: props.currentUser.id, username: props.currentUser.username})
-            }
-            if(type === 'direct') {
-                setForm({user: props.currentUser.id, username: props.currentUser.username})
-            }
+        if(type === 'track') {
+            setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id, username: props.currentUser.username }) 
         }
-      
+        if(type === 'artist') {
+            setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id, username: props.currentUser.username})
+        }
+        if(type === 'direct') {
+            setForm({user: props.currentUser.id, username: props.currentUser.username})
+        }
         
     },[props.setArtist, props.setTrack])
 
@@ -131,8 +77,7 @@ export default function NewPost (props) {
                     <input type="text" 
                         id="songTitle" 
                         readOnly
-                        value={`${type === 'track'? song : null}`} 
-                        
+                        value={`${type === 'track'? props.track.track.name : null}`} 
                         className='formInputs'>
                     </input>
                     <br></br>
@@ -140,7 +85,7 @@ export default function NewPost (props) {
                     <input type="text" 
                         id="songArtist" 
                         readOnly
-                        value={`${type === 'track'? artist : null}`} 
+                        value={`${type === 'track'? props.track.track.artist : null}`} 
                         className="formInputs">
                     </input>
                     <br></br>

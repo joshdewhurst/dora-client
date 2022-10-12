@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Search (props) {
     console.log(window.performance.navigation);//PerformanceNavigation {type: 1, redirectCount: 0}
-    console.log(window.performance.getEntriesByType("navigation")[0]); //
+    console.log(window.performance.getEntriesByType("navigation")[0].type); //
     // const [state, setState] = useState({})
     // const [errorMessage, setErrorMessage] = useState('')
     const [searchType, setSearchType] = useState('song')
