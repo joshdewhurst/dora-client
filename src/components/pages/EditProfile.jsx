@@ -18,7 +18,7 @@ export default function EditProfile(props) {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${userId}`)
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${userId}`, options)
                 console.log(response.data)
             } catch(err) {
                 console.warn(err) 
@@ -30,6 +30,15 @@ export default function EditProfile(props) {
         }
         getUser()
     })
+
+	const options = {
+		headers: {
+			'authorization': localStorage.getItem('jwt'),
+			'Accept' : 'application/json',
+			'Content-Type': 'application/json'
+		}
+	}
+
     const handleSubmit = async e => {
         e.preventDefault()
         try {
@@ -39,7 +48,7 @@ export default function EditProfile(props) {
                 password,
                 username
             }
-            const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/profile/${userId}/edit`, reqBody)
+            const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/profile/${userId}/edit`, reqBody, options)
             const { token }  = response.data
             console.log("token", token )
             localStorage.setItem("jwt", token)

@@ -27,11 +27,17 @@ export default function Home (props) {
 
         const getPosts = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`,{
+                    headers: {
+                        'authorization': localStorage.getItem('jwt'),
+                        'Accept' : 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
                 // console.log(response.data)
                 setPosts(response.data)
                 // console.log(posts)
-                const userTest = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`)
+                const userTest = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`, options)
                 console.log(userTest.data)
                 setUsers(userTest.data)
 
@@ -45,6 +51,13 @@ export default function Home (props) {
         getPosts()
     }, [])
 
+    const options = {
+		headers: {
+			'authorization': localStorage.getItem('jwt'),
+			'Accept' : 'application/json',
+			'Content-Type': 'application/json'
+		}
+	}
 
 
     const allPosts = posts.slice(0).reverse().map((post) => {

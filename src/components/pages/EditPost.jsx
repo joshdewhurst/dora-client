@@ -12,7 +12,7 @@ export default function EditPost (props) {
     useEffect(() => {
         const getPost = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`)
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`, options)
                 console.log(response.data)
                 setForm(response.data)
             } catch(err) {
@@ -25,10 +25,18 @@ export default function EditPost (props) {
         getPost()
     }, [id])
 
+    const options = {
+		headers: {
+			'authorization': localStorage.getItem('jwt'),
+			'Accept' : 'application/json',
+			'Content-Type': 'application/json'
+		}
+	}
+
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-            const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`, form)
+            const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`, form, options)
             navigate(`/post/${id}`)
         } catch(err) {
             console.warn(err)
