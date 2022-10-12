@@ -48,7 +48,7 @@ export default function Media (props) {
     const artistListens = artistParse.toLocaleString("en-US")
 
     return (
-        <div className="bg-pink-300 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl">
+        <div className="bg-red-200 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl">
             <div>
                 <p className="text-6xl">Song Info</p>
                 <p>{media.name}</p>

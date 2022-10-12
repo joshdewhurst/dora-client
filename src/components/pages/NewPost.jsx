@@ -16,20 +16,20 @@ export default function NewPost (props) {
     const { type } = useParams()
 
     // clears state so that search results are cleared when you navigate to different pages on the navbar
-    useEffect(() => {
-        try {
-            props.setApiResponse([])
-            props.setArtistApiResponse([])
-            props.setInputValue("")
-            props.setSearch("")
-            props.setArtist("")
-        }catch (err) {
-            console.warn(err)
-            if (err.response) {
-                setErrorMessage(err.response.data.message)
-            }
-        }
-    }, [])
+    // useEffect(() => {
+    //     try {
+    //         props.setApiResponse([])
+    //         props.setArtistApiResponse([])
+    //         props.setInputValue("")
+    //         props.setSearch("")
+    //         props.setArtist("")
+    //     }catch (err) {
+    //         console.warn(err)
+    //         if (err.response) {
+    //             setErrorMessage(err.response.data.message)
+    //         }
+    //     }
+    // }, [])
     
 
     useEffect(()=> {
