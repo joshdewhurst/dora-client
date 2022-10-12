@@ -41,9 +41,7 @@ export default function Home (props) {
 
         const getPosts = async () => {
             try {
-                // calling on the DB to render a list of all posts
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)
-
+                // calling on the DB to render a list of all post
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`,{
                     headers: {
                         'authorization': localStorage.getItem('jwt'),
