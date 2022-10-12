@@ -42,11 +42,14 @@ export default function Posts (props) {
         if (post.user === props.currentUser.id) {  
             return(
             
-                <div key={`${post._id}`}>
-                    <Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
-                    <p>Rating: {post.rating}</p>
-                    <p>Blurb: {post.blurb}</p>
-                    
+                <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
+                    <div className='p-4 h-fit w-fit font-bold mx-auto'>
+                        <Link to={`/post/${post._id}`}>{post.title} by {post.artist}</Link>
+                        <p>Rating: {post.rating}</p>
+                    </div>
+                    <div className='text-left p-4 bg-blue-800 rounded-3xl'>
+					    <p>{post.blurb}</p>
+				    </div>
                 </div>
             )
         } 
@@ -57,7 +60,7 @@ export default function Posts (props) {
    
     return (
         <div>
-            <h1>Your Posts</h1>
+            <h1 className="p-12 text-2xl mx-auto">Your Posts</h1>
           {userPosts}
         </div>
     )
