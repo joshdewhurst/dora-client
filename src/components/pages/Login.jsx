@@ -9,6 +9,14 @@ export default function Login({ currentUser, setCurrentUser }) {
 	const [password, setPassword] = useState('')
 	const [msg, setMsg] = useState('')
 
+	const options = {
+		headers: {
+			'authorization': localStorage.getItem('jwt'),
+			'Accept' : 'application/json',
+			'Content-Type': 'application/json'
+		}
+	}
+
 	// submit event handler
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -18,7 +26,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 				email, 
 				password
 			}
-			const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`, reqBody)
+			const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`, reqBody, options)
 
 			// save the token in localstorage
 			const { token } = response.data

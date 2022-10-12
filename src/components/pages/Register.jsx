@@ -10,6 +10,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 	const [password, setPassword] = useState('')
 	const [username, setUsername] = useState('')
 	const [msg, setMsg] = useState('')
+	
 
 	// submit event handler
 	const handleSubmit = async e => {

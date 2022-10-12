@@ -25,18 +25,18 @@ export default function Profile({ currentUser, handleLogout, props }) {
         }
     }, [])
 
+	const options = {
+		headers: {
+			'authorization': localStorage.getItem('jwt'),
+			'Accept' : 'application/json',
+			'Content-Type': 'application/json'
+		}
+	}
+
 	// useEffect for getting the user data and checking auth
 	useEffect(() => {
 	const fetchData = async () => {
 			try {
-				// get the token from local storage
-				const token = localStorage.getItem('jwt')
-				// make the auth headers
-				const options = {
-					headers: {
-						'Authorization': token
-					}
-				}
 				// hit the auth locked endpoint
 				const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, options)
 				// example POST with auth headers (options are always last argument)
@@ -62,7 +62,7 @@ export default function Profile({ currentUser, handleLogout, props }) {
 useEffect(() => {
 	const getPosts = async () => {
 		try {
-			const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`)
+			const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`, options)
 			console.log(response.data)
 			setPosts(response.data)
 		} catch (err) {
