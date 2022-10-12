@@ -66,112 +66,28 @@ export default function EditProfile(props) {
         }
     }
     return(
-        // <div>
-        //     <div>
-		// 	<h1 className='text-2xl font-bold'>Edit your account:</h1>
-
-		// 	<p>{errorMessage}</p>
-
-		// 	<form className='text-3xl w-1/3 mx-auto' onSubmit={handleSubmit}>
-		// 		<div className='flex justify-around '>
-		// 			<div className='w-1/2'>
-		// 				<label htmlFor='name'>Name:</label>
-		// 			</div>
-		// 			<div className='w-fit'>
-		// 				<input 
-		// 					type="text"
-		// 					id="name"
-		// 					placeholder='your username...'
-		// 					onChange={e => setName(e.target.value)}
-		// 					value={name}
-		// 				/>
-		// 			</div>
-		// 		</div>
-
-		// 		<div className='flex justify-around '>
-		// 			<div className='w-1/2'>
-		// 				<label htmlFor='username'>Username:</label>
-		// 			</div>
-		// 			<div className='w-fit'>
-		// 				<input 
-		// 					type="text"
-		// 					id="username"
-		// 					placeholder='your email...'
-		// 					onChange={e => setUsername(e.target.value)}
-		// 					value={username}
-		// 				/>
-		// 			</div>
-		// 		</div>
-
-		// 		<div className='flex justify-around '>
-		// 			<div className='w-1/2'>
-		// 				<label htmlFor='email'>Email:</label>
-		// 			</div>
-		// 			<div className='w-fit'>
-		// 				<input 
-		// 					type="email"
-		// 					id="email"
-		// 					placeholder='your email...'
-		// 					onChange={e => setEmail(e.target.value)}
-		// 					value={email}
-		// 				/>
-		// 			</div>
-		// 		</div>
-
-		// 		<div className='flex justify-around'>
-		// 			<div className='w-1/2'>
-		// 				<label htmlFor='password'>Password:</label>
-		// 			</div>
-		// 			<div className='w-fit'> 
-		// 				<input 
-		// 					type="password"
-		// 					id="password"
-		// 					placeholder="******"
-		// 					onChange={e => setPassword(e.target.value)}
-		// 					value={password}
-		// 				/>
-		// 			</div>
-		// 		</div>	
-        //         {/* <div className='flex justify-around'>
-		// 			<div className='w-1/2'>
-		// 				<label htmlFor='newPassword'>New Password:</label>
-		// 			</div>
-		// 			<div className='w-fit'> 
-		// 				<input 
-		// 					type="newPassword"
-		// 					id="newPassword"
-		// 					placeholder="Enter new password..."
-		// 					onChange={e => setNewPassword(e.target.value)}
-		// 					value={newPassword}
-		// 				/>
-		// 			</div>
-		// 		</div>	 */}
-		// 		<button type="submit">Edit</button>
-		// 	</form>
-		// </div>
-        // </div>
 
 		<div className="bg-yellow-400 p-12 rounded-md mt-12 flex flex-col text-white drop-shadow-2xl text-2xl w-2/3 mx-auto">
 			<form className='' onSubmit={handleSubmit}>	
 				<div className='font-bold w-1/3  flex flex-row justify-start'>
-				<label className="mb-2"></label>
-						<input className='h-1/3 mb-2 text-3xl  bg-yellow-400 ml-2' type="text" id="username" placeholder='username' onChange={e => setUsername(e.target.value)} value={username} />
+				<label className="mb-2">Username</label>
+						<input required className='h-1/3 mb-2 text-3xl  bg-yellow-400 ml-2' type="text" id="username" placeholder='username' onChange={e => setUsername(e.target.value)} value={username} />
 					
 				</div>
 				<div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-white  font-bold p-2">
 					<div className='flex w-1/3 flex-col p-2'>
 						<label className="mb-2 border-b-4 border-green-400">Name</label>
-						<input className='pl-2' type="text" id="name" placeholder='name' onChange={e => setName(e.target.value)} value={name} />
+						<input required className='pl-2' type="text" id="name" placeholder='name' onChange={e => setName(e.target.value)} value={name} />
 					</div>
 
 					<div className='flex w-1/3  flex-col p-2'>
 						<label className="mb-2 border-b-4 border-yellow-400">Email</label>
-						<input className='pl-2' type="email" id="email" placeholder='email' onChange={e => setEmail(e.target.value)} value={email} />
+						<input required className='pl-2' type="email" id="email" placeholder='email' onChange={e => setEmail(e.target.value)} value={email} />
 					</div>
 
 					<div className='flex w-1/3  flex-col p-2'>
 						<label className='mb-2 border-b-4 border-red-400'>Password</label>
-						<input className='pl-2' type="password" id="password" placeholder='password' onChange={e => setPassword(e.target.value)} value={password} />
+						<input required className='pl-2' type="password" id="password" placeholder='password' onChange={e => setPassword(e.target.value)} value={password} />
 					</div>
 
 				</div>
