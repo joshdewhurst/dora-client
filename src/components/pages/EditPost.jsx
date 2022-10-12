@@ -39,10 +39,13 @@ export default function EditPost (props) {
     }
     
     const trackList = props.apiResponse.map((track, i) => {   
+        // if (track.name ) {
+        //     form.artist = track.artist
+        // }
         return (
-            <option value={track.name}>
+                <option value={track.name}>
                 {track.name} by {track.artist}
-            </option>
+                </option>
         )
     }) 
 
@@ -68,20 +71,30 @@ export default function EditPost (props) {
                             name={`${form.title}`}
                             value={props.inputValue}
                             onChange={e => props.setInputValue(e.target.value)}
-                            placeholder="song search"
+                            placeholder="Want to change your song?"
                 />
                         <button className='ml-2 p-3 bg-blue-600 rounded-md' type='submit' onClick={handleSearch}>SEARCH</button>
                         <select
                         value={`${form.title}`}
                         onChange={(e) => setForm({...form, title: e.target.value})}
+                        required
                         >
-                            <option>Test</option>
                             {trackList}
                         </select>
                     <br></br>
+                    <label htmlFor="songTitle">Track:</label>
+                    <input type="readOnly"
+                           value={`${form.title}`}
+                           class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                            disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                            invalid:border-pink-500 invalid:text-pink-600
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            " />
                     <label htmlFor="songArtist">Artist:</label>
-                    <input type="text"
+                    <input type="readOnly"
                            id="songArtist"
+                           name="newArtist"
                            value={`${form.artist}`}
                            onChange={(e) => setForm({...form, artist: e.target.value})}
                            class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
