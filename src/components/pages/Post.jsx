@@ -43,7 +43,7 @@ export default function Post (props) {
     const deletePost = async () => {
         try {
             await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`)
-            navigate("/post")
+            navigate("/posts")
             
 
         } catch (err) {
