@@ -7,6 +7,7 @@ export default function EditPost (props) {
     const [errorMessage, setErrorMessage] = useState("")
     const { id } = useParams()
     const navigate = useNavigate()
+    const [search, setSearch] = useState()
 
     useEffect(() => {
         const getPost = async () => {
@@ -36,6 +37,20 @@ export default function EditPost (props) {
             }
         }
     }
+    
+    const trackList = props.apiResponse.map((track, i) => {   
+        return (
+            <option>
+                {track.name} by {track.artist}
+            </option>
+        )
+    }) 
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        props.setSearch(props.inputValue)
+    }
+
     return (
         <div class="flex-col w-1/2 mx-auto">
             <h1>Edit Post</h1>
@@ -43,18 +58,26 @@ export default function EditPost (props) {
             
             <form onSubmit={handleSubmit}>
                 <div >
-                    <label htmlFor="songTitle">Song Title:</label>
-                    <input type="text"
-                           id="songTitle"
-                           value={`${form.title}`}
-                           onChange={(e) => setForm({...form, title: e.target.value})}
-                           class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                <input 
+                            className='mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
                             disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
                             invalid:border-pink-500 invalid:text-pink-600
-                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
-                            ">
-                    </input>
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500'
+                            type='text'
+                            name={`${form.title}`}
+                            value={props.inputValue}
+                            onChange={e => props.setInputValue(e.target.value)}
+                            placeholder="song search"
+                />
+                        <button className='ml-2 p-3 bg-blue-600 rounded-md' type='submit' onClick={handleSearch}>SEARCH</button>
+                        <select
+                        value={`${form.title}`}
+                        onChange={(e) => setForm({...form, title: e.target.value})}
+                        >
+                            <option>Test</option>
+                            {trackList}
+                        </select>
                     <br></br>
                     <label htmlFor="songArtist">Artist:</label>
                     <input type="text"

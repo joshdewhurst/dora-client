@@ -177,8 +177,8 @@ function App() {
 
           <Route 
             path='/post/:id/edit'
-            element={currentUser ? <EditPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} 
-            apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} setSearch={setSearch} setArtist={setArtist}/> : <Loading />}
+            element={currentUser ? <EditPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} 
+            artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} inputValue={inputValue} setInputValue={setInputValue} setSearch={setSearch} setTrack={setTrack} setArtist={setArtist} /> : <Loading />}
             />
 
           <Route 
