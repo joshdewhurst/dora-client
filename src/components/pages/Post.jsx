@@ -43,7 +43,7 @@ export default function Post (props) {
     const deletePost = async () => {
         try {
             await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`)
-            navigate("/post")
+            navigate("/posts")
             
 
         } catch (err) {
@@ -73,12 +73,15 @@ export default function Post (props) {
                 <h3>Rating: {post.rating}</h3>
                 <p>Blurb: {post.blurb}</p>
             </div>
-            <div>
+            {post.user === props.currentUser.id ? <div>
                 <Link to={`/post/${id}/edit`}>
                     <button class="ml-2 p-3 bg-blue-600 rounded-md text-white">Edit Post</button>
                 </Link>
                 <button onClick={deletePost} class="ml-2 p-3 bg-blue-600 rounded-md text-white">Delete Post</button>
-            </div>
+            </div> : 
+            <div></div>
+            }
+           
            
         </div>
     )
