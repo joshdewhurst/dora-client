@@ -14,23 +14,22 @@ export default function NewPost (props) {
     const [errorMessage, setErrorMessage] = useState("")
     const navigate = useNavigate()
     const { type } = useParams()
-    const [search, setSearch] = useState()
 
     // clears state so that search results are cleared when you navigate to different pages on the navbar
-    useEffect(() => {
-        try {
-            props.setApiResponse([])
-            props.setArtistApiResponse([])
-            props.setInputValue("")
-            props.setSearch("")
-            props.setArtist("")
-        }catch (err) {
-            console.warn(err)
-            if (err.response) {
-                setErrorMessage(err.response.data.message)
-            }
-        }
-    }, [])
+    // useEffect(() => {
+    //     try {
+    //         props.setApiResponse([])
+    //         props.setArtistApiResponse([])
+    //         props.setInputValue("")
+    //         props.setSearch("")
+    //         props.setArtist("")
+    //     }catch (err) {
+    //         console.warn(err)
+    //         if (err.response) {
+    //             setErrorMessage(err.response.data.message)
+    //         }
+    //     }
+    // }, [])
     
 
     useEffect(()=> {
@@ -67,22 +66,6 @@ export default function NewPost (props) {
             }
         }
     }
-
-     const trackList = props.apiResponse.map((track, i) => {   
-            // if (track.name ) {
-            //     form.artist = track.artist
-            // }
-            return (
-                    <option value={track.name}>
-                    {track.name} by {track.artist}
-                    </option>
-            )
-        }) 
-    
-        const handleSearch = (e) => {
-            e.preventDefault()
-            props.setSearch(props.inputValue)
-        }
 
     const trackForm =
             (
@@ -135,22 +118,12 @@ export default function NewPost (props) {
             (
             <form onSubmit={handleSubmit}>
                 <div >
-                <input 
-                            className='formInputs'
-                            type='text'
-                            name={`${form.title}`}
-                            value={props.inputValue}
-                            onChange={e => props.setInputValue(e.target.value)}
-                            placeholder="Search for a song you want to post!"
-                />
-                        <button className='ml-2 p-3 bg-blue-600 rounded-md' type='submit' onClick={handleSearch}>SEARCH</button>
-                        <select
-                        value={`${form.title}`}
+                    <label htmlFor="songTitle">Song Title:</label>
+                    <input type="text" 
+                        id="songTitle"  
+                        className='formInputs'
                         onChange={(e) => setForm({...form, title: e.target.value})}
-                        required
-                        >
-                            {trackList}
-                        </select>
+                    />
                     <br></br>
                     <label htmlFor="songArtist">Artist:</label>
                     <input type="text" 
