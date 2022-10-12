@@ -40,7 +40,7 @@ export default function EditPost (props) {
     
     const trackList = props.apiResponse.map((track, i) => {   
         return (
-            <option>
+            <option value={track.name}>
                 {track.name} by {track.artist}
             </option>
         )

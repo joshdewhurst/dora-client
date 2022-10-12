@@ -69,7 +69,7 @@ export default function Home (props) {
 
             <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-md mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
                 <div className='font-bold flex flex-row justify-start'>
-                        <p>{post.username}</p>
+                        <p>@{post.username}</p>
                 </div>
                 <div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-indigo-200 font-bold p-4">
                     <div className="flex flex-col p-4">
@@ -100,9 +100,9 @@ export default function Home (props) {
         } )
     
     return (
-        <div>
-            <h2>Your Feed</h2>
-            {allPosts}
+        <div className="bg-blue-100">
+            <h2 className="bg-blue-300 p-8 mt-4rounded-md flex flex-col text-6xl w-1/2 mx-auto">explorin'</h2>
+            <p>{allPosts}</p>
         </div>
     )
 }
