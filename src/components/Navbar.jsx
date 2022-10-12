@@ -4,8 +4,9 @@ import { Link, BrowserRouter } from 'react-router-dom'
 
 export default function Navbar({ currentUser, handleLogout }) {
 	 const loggedIn = (
-		<div className='mx-auto w-3/4 inline-block flex-nowrap uppercase'>
+		<div className='mx-auto w-3/4 inline-block flex-nowrap text-lg uppercase'>
 			<Link to='/home'>Feed</Link> { " | "}
+			<Link to='/post/new/direct'>New Post</Link> { " | "}
 			<Link to='/trending'>Trending</Link> { " | "}
 			<Link to='/search'>Search</Link> { " | "}
 			{/* if the user is logged in... */}
