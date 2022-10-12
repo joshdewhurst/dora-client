@@ -8,20 +8,20 @@ export default function Home (props) {
     const [users, setUsers] = useState([])
     // const [username, setUsername] = useState([])
 
-    useEffect(() => {
-        try {
-            props.setApiResponse([])
-            props.setArtistApiResponse([])
-            props.setInputValue("")
-            props.setSearch("")
-            props.setArtist("")
-        }catch (err) {
-            console.warn(err)
-            if (err.response) {
-                setErrorMessage(err.response.data.message)
-            }
-        }
-    }, [])
+    // useEffect(() => {
+    //     try {
+    //         props.setApiResponse([])
+    //         props.setArtistApiResponse([])
+    //         props.setInputValue("")
+    //         props.setSearch("")
+    //         props.setArtist("")
+    //     }catch (err) {
+    //         console.warn(err)
+    //         if (err.response) {
+    //             setErrorMessage(err.response.data.message)
+    //         }
+    //     }
+    // }, [])
 
     useEffect(() => {
 
@@ -47,53 +47,52 @@ export default function Home (props) {
 
 
 
-    const allPosts = posts.map((post) => {
-
-        // const getUserInfo = axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${post.user}`)
-        // .then ((response) => {
-        //     console.log(response.data.name)
-        //     username = response.data.name
-        // })
+    const allPosts = posts.slice(0).reverse().map((post) => {
+        // async function getUserInfo() {
+        //     try {
+        //         const getUserInfo = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${post.user}`)
+        //             .then(response => {
+        //                 return (response.data.username)})
+                
+        //     } catch(err) {
+                
+        //     }
+        // }
+        // let username = getUserInfo()
+        // console.log(username)
 
         const postedAt = new Date( post.createdAt )
         let date = postedAt.toLocaleString();
 
         return (
             
-            <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
-                <div className='p-4 h-fit w-fit font-bold object-center mx-auto'>
-                <div className="basis-1/4">
-                    <p className="text-left"> @username </p>
+            <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-md mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
+                <div className='font-bold flex flex-row justify-start'>
+                        <p>username</p>
                 </div>
-                <div>
-                    <p className="text-sm basis-1/2">posted: {date}</p>
+                <div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-indigo-200 font-bold p-4">
+                    <div className="flex flex-col p-4">
+                        <p className="border-b-4 border-green-400">Song</p>
+                        <p className="mt-4">{post.title}</p>
+                    </div>
+                    <div className="flex flex-col p-4">
+                        <p className="border-b-4 border-yellow-400">Artist</p>
+                        <p className="mt-4">{post.artist}</p>
+                    </div>
+                    <div className="flex flex-col p-4">
+                        <p className="border-b-4 border-red-400">Rating</p>
+                        <p className="mt-4">{post.rating}</p>
+                    </div>
                 </div>
-                <div className="basis-3/4">
-                    <table className="table-auto border-separate border-spacing-4 border rounded-lg">
-                        <thead>
-                            <tr>
-                            <th className="border-2 border-blue-400 rounded-full text-center p-1">Song</th>
-                            <th className="border-2 border-blue-800 rounded-full text-center">Artist</th>
-                            <th className="border-2 border-blue-600 rounded-full text-center">Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="text-left">
-                            <td>{post.title}</td>
-                            <td>{post.artist}</td>
-                            <td>{post.rating}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="p-4 bg-blue-900 rounded-b-md">
+                    <h3>{post.blurb}</h3>
                 </div>
-                <div>
-                    <p className="text-center basis-3/4">Blurb: {post.blurb}</p>
+                <div className="mt-8 flex justify-center">
+                    <Link to={`/post/${post._id}`} className="bg-sky-500 hover:bg-sky-700 rounded-md p-2 font-bold">Expand Post</Link>
                 </div>
-                <div>
-                    <Link to={`/post/${post._id}`} className="bg-sky-500 hover:bg-sky-700 rounded-lg p-1 m-2 basis 1/4">Expand Post</Link>
+                    <p className="w-fit text-sm">posted: {date}</p>
                 </div>
-                </div>
-            </div>
+            
         )
         } )
     
