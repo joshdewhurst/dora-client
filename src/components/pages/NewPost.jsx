@@ -194,7 +194,14 @@ export default function NewPost (props) {
     return (
        
         <div className="flex-col w-1/2 mx-auto">
+
             {type === 'track'? trackForm : type === 'artist'? albumForm : blankForm}
+    
+            <div>
+            <button className={`w-fit h-fit ml-2 p-3 ${type==='track'? 'bg-blue-800' : 'bg-blue-600'} rounded-md`} onClick={handleTypeTrack}>SONG</button>
+            <button className={`w-fit h-fit ml-2 p-3 ${type==='artist'? 'bg-blue-800' : 'bg-blue-600'} rounded-md`} onClick={handleTypeArtist}>ARTIST</button>
+            </div>
+            {type === 'track'? trackForm : albumForm}
 
         </div>
         

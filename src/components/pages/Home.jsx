@@ -66,6 +66,7 @@ export default function Home (props) {
 
         return (
             
+
             <div key={`${post._id}`} className="bg-blue-700 p-12 rounded-md mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
                 <div className='font-bold flex flex-row justify-start'>
                         <p>username</p>
@@ -83,6 +84,7 @@ export default function Home (props) {
                         <p className="border-b-4 border-red-400">Rating</p>
                         <p className="mt-4">{post.rating}</p>
                     </div>
+
                 </div>
                 <div className="p-4 bg-blue-900 rounded-b-md">
                     <h3>{post.blurb}</h3>
@@ -91,6 +93,7 @@ export default function Home (props) {
                     <Link to={`/post/${post._id}`} className="bg-sky-500 hover:bg-sky-700 rounded-md p-2 font-bold">Expand Post</Link>
                 </div>
                     <p className="w-fit text-sm">posted: {date}</p>
+
                 </div>
             
         )
