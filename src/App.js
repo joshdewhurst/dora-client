@@ -192,12 +192,6 @@ function App() {
             element={currentUser ? <Media handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} /> : <Loading />}
             />
 
-          <Route
-          path='/post/new'
-          element={currentUser ? <NewPost handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} apiResponse={apiResponse} setApiResponse={setApiResponse} artistApiResponse={artistApiResponse} setArtistApiResponse={setArtistApiResponse} setInputValue={setInputValue} track={track} artist={artist} setSearch={setSearch} setArtist={setArtist} /> : <Loading />}
-
-          />
-          
 
           <Route 
             path='/post/new/:type'
