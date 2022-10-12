@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Search (props) {
+    console.log(window.performance.navigation);//PerformanceNavigation {type: 1, redirectCount: 0}
+    console.log(window.performance.getEntriesByType("navigation")[0]); //
     // const [state, setState] = useState({})
     // const [errorMessage, setErrorMessage] = useState('')
     const [searchType, setSearchType] = useState('song')
+   
 
     // clears state so that search results are cleared when you navigate to different pages on the navbar
     // useEffect(() => {
@@ -22,6 +25,7 @@ export default function Search (props) {
     //     }
     // }, [])
 
+   
     const trackList = props.apiResponse.map((track, i) => {
         console.log( {track})
         return (
@@ -91,7 +95,7 @@ export default function Search (props) {
                         className='text-black p-2 rounded-md'
                         type='text'
                         value={props.inputValue}
-                        onChange={e => props.setInputValue(e.target.value)}
+                        onChange={e => {props.setInputValue(e.target.value)}}
                     />
 
                     <button className='ml-2 p-3 bg-blue-600 rounded-md' type='submit'>SEARCH</button>
