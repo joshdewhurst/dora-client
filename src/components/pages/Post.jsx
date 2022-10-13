@@ -61,6 +61,10 @@ export default function Post (props) {
             }
         }
     }
+
+    const postedAt = new Date( post.createdAt )
+    let date = postedAt.toLocaleString();
+
     return (
         <div class="bg-blue-100 h-screen">
             <br></br>
@@ -68,27 +72,38 @@ export default function Post (props) {
                 <Link to={`/posts`} className="underline hover:no-underline
                    text-blue-600 hover:text-blue-800 
                    visited:text-purple-600">
-                    Your Posts
+                    Home Feed
                 </Link>
             </div>
           
             <br></br>
-            <div className="text-4xl">Your Post!</div>
-            <div className="bg-red-600 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl w-1/2 mx-auto">
-                <h1>Song Post</h1>
-                <h2>Title: {post.title}</h2>
-                <h2>Artist: {post.artist}</h2>
-                <h3>Rating: {post.rating}</h3>
-                <p>Blurb: {post.blurb}</p>
+            <div className="bg-emerald-400 drop-shadow-2xl p-12 rounded-md mt-12 flex flex-col text-white text-2xl w-2/3 mx-auto">
+                    <div className='flex w-3/4 text-2xl font-bold flex-col p-2'>
+						<h3 className='w-fit drop-shadow-lg hover:text-slate-200'>Posted at: {date}</h3>
+					</div>
+                 <div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-white  font-bold p-2">
+					<div className='flex w-1/3 flex-col p-2'>
+						<p className="mb-2 border-b-4 border-rose-500 hover:text-rose-500">Title:</p>
+						{post.title}
+					</div>
+					<div className='flex w-1/3 flex-col p-2'>
+						<p className="mb-2 border-b-4 border-pink-500 hover:text-pink-500">Artist</p>
+						{post.artist}
+					</div>	
+                    <div className='flex w-1/3 flex-col p-2'>
+						<p className="mb-2 border-b-4 border-fuchsia-500 hover:text-fuchsia-500">Rating</p>
+						{post.rating}
+					</div>	
+				</div>
+                <div className="p-4 bg-lime-600 rounded-b-md hover:bg-lime-500">
+						<h1 className='text-2xl font-bold'>{post.blurb}</h1>	
+				</div>
+                    <div className='mt-8 flex justify-between w-1/2 mx-auto'>
+                        <Link to={`/post/${id}/edit`}><button className="mr-2 bg-cyan-600 hover:bg-white hover:text-teal-200 rounded-md p-2 font-bold">Edit Post</button>
+                        </Link>
+				        <button onClick={deletePost} className=" ml-2 bg-cyan-600 hover:bg-white hover:text-teal-200 rounded-md p-2 font-bold">Delete</button>
+					</div>
             </div>
-            {post.user === props.currentUser.id ? <div>
-                <Link to={`/post/${id}/edit`}>
-                    <button class="ml-2 p-3 bg-blue-600 rounded-md text-white">Edit Post</button>
-                </Link>
-                <button onClick={deletePost} class="ml-2 p-3 bg-blue-600 rounded-md text-white">Delete Post</button>
-            </div> : 
-            <div></div>
-            }
 
             
            
