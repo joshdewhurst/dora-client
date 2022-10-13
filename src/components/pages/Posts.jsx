@@ -100,9 +100,9 @@ export default function Posts (props) {
 
    
     return (
-        <div class="bg-blue-100 h-screen">
-            <h1 className="p-12 font-bold text-7xl mx-auto">Your Posts</h1>
-          <div className="bg-blue-100 h-screen">{userPosts}</div>
+        <div class="bg-blue-100 h-100">
+            <h1 className="p-8 font-bold text-7xl mx-auto">Your Posts</h1>
+          <div className="bg-blue-100 h-100 pb-1">{userPosts}</div>
         </div>
     )
 }

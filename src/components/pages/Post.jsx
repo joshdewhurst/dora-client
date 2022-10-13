@@ -98,14 +98,17 @@ export default function Post (props) {
                 <div className="p-4 bg-lime-600 rounded-b-md hover:bg-lime-500">
 						<h1 className='text-2xl font-bold'>{post.blurb}</h1>	
 				</div>
+                <div>
                     {post.user === props.currentUser.id ? 
-                    <div className='mt-8 flex justify-between w-1/2 mx-auto'>
-                        <Link to={`/post/${id}/edit`}><button className="mr-2 bg-cyan-600 hover:bg-white hover:text-teal-200 rounded-md p-2 font-bold">Edit Post</button>
-                        </Link>
-                        <button onClick={deletePost} className=" ml-2 bg-cyan-600 hover:bg-white hover:text-teal-200 rounded-md p-2 font-bold">Delete</button>
-                    </div> : 
-                    <div></div>
+                        <div className='mt-8 flex justify-between w-1/2 mx-auto'>
+                            <Link to={`/post/${id}/edit`}><button className="mr-2 bg-cyan-600 hover:bg-white hover:text-teal-200 rounded-md p-2 font-bold">Edit Post</button>
+                            </Link>
+                            <button onClick={deletePost} className=" ml-2 bg-cyan-600 hover:bg-white hover:text-teal-200 rounded-md p-2 font-bold">Delete</button>
+                        </div> : 
+                        <div></div>
                     }
+                </div>
+                   
                     
             </div>
 

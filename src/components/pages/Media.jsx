@@ -48,7 +48,7 @@ export default function Media (props) {
     const artistListens = artistParse.toLocaleString("en-US")
 
     return (
-        <div className="bg-blue-100 h-screen">
+        <div className="bg-blue-100 h-100">
             <br></br>
             <div className="bg-red-200 m-12 rounded-3xl mb-5 flex flex-col text-white text-2xl">
             <br></br>
