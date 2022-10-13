@@ -1,4 +1,4 @@
-# d'ora
+# d'ora (https://media.discordapp.net/attachments/1027736247629774858/1029898006218162278/android-chrome-512x512.png?width=468&height=468)
 
 d'ora is a music social media app that allows you to share albums and songs, along with a rating or blurb about each.  Along with sharing your own music, you will be able to see and react to what other users are sharing as well!  Curious as to what music is popular?  You can see what songs and albums are trending.  Can't remember what song you're thinking of?  Use our search function to help narrow it down!  
 ---
