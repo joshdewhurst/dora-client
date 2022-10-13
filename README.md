@@ -2,7 +2,9 @@
 
 d'ora is a music social media app that allows you to share albums and songs, along with a rating or blurb about each.  Along with sharing your own music, you will be able to see and react to what other users are sharing as well!  Curious as to what music is popular?  You can see what songs and albums are trending.  Can't remember what song you're thinking of?  Use our search function to help narrow it down! 
 ![d'ora app main feed](https://i.postimg.cc/VvJ0KFbs/d-ora-Screenshot-of-home-Feed.png)
+
 ![d'ora welcome screen](https://i.postimg.cc/1XVc8SBK/Screen-Shot-2022-10-12-at-9-21-27-PM.png)
+
 ![d'ora user profile](https://i.postimg.cc/NGXdG8nv/Screen-Shot-2022-10-12-at-9-21-41-PM.png)
 
 ---
