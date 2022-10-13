@@ -206,9 +206,12 @@ export default function NewPost (props) {
 
      
     return (
-       
-        <div className="flex-col w-1/2 mx-auto">
-            {type === 'track'? trackForm : type === 'artist'? albumForm : blankForm}
+        <div class="bg-blue-100 h-screen">
+
+            <div className="flex-col w-1/2 mx-auto">
+                {type === 'track'? trackForm : type === 'artist'? albumForm : blankForm}
+            </div>
+    
         </div>
         
     )

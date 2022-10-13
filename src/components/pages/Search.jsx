@@ -29,7 +29,7 @@ export default function Search (props) {
     const trackList = props.apiResponse.map((track, i) => {
         console.log( {track})
         return (
-            <div key={`track${i}`} className="my-4 flex p-4 w-1/3 mx-auto ">
+            <div key={`track${i}`} className="my-4 flex p-4 w-1/3 mx-auto bg-blue-100">
                 <div className='w-full bg-blue-900 p-8 rounded-3xl'>
                     <div className=' text-white text-left font-bold'>
                         <h1 className='uppercase'>{track.name}</h1>
@@ -85,7 +85,7 @@ export default function Search (props) {
 
 
     return (
-        <div>
+        <div className="bg-blue-100 h-screen">
             <div className='flex bg-slate-600 p-4 flex-row justify-center mx-auto text-white font-bold'>
                 <button className={`w-fit h-fit ml-2 p-3 ${searchType==='song'? 'bg-blue-800' : 'bg-blue-600'} rounded-md`} onClick={handleSearchClickSong}>SONGS</button>
                 <button className={`w-fit h-fit ml-2 p-3 ${searchType==='artist'? 'bg-blue-800' : 'bg-blue-600'} rounded-md`} onClick={handleSearchClickArtist}>ARTISTS</button>
