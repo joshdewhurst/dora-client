@@ -1,7 +1,7 @@
 # d'ora
 d'ora is a music social media app that allows you to share albums and songs, along with a rating or blurb about each.  Along with sharing your own music, you will be able to see and react to what other users are sharing as well!  Curious as to what music is popular?  You can see what songs and albums are trending.  Can't remember what song you're thinking of?  Use our search function to help narrow it down!  
 ---
-# Instalation Instructions
+# Installation Instructions
 ###
 **Client Installation Instructions**
 1. Fork on GitHub and clone down this repository
@@ -18,7 +18,17 @@ d'ora is a music social media app that allows you to share albums and songs, alo
 4. add `JWT_SECRET="[SECRET_KEY_HERE]"` in the `.env`
 5. Run `nodemon` to start server
 ---
+## Tech Stack Used
+- JavaScript
+- Express
+- Tailwind
+- MongoDB and Mongoose
+- Node.js
+- JWT
+- Bcrypt for Node.js
+- React
 
+d'ora is a `react` based Node.js application. The backend of our project `d'ora Server` uses Express.js along with a noSQL database called `mongoDB'. `d'ora Client` uses `axios` to connect with an API and gather information on songs and artist, which the user can interact with. Javascript is used throughout server and client sides. EJS (Embedded JavaScript Templating) and Tailwind are both used to design the interface that the user inteacts with. JWT(JSON Web Token) is used to protect a users data and authenticate them. 
 # API
 
 We will using the [last.fm API](https://www.last.fm/api) at the moment.
