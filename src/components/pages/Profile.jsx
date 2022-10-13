@@ -94,6 +94,7 @@ useEffect(() => {
 						{currentUser.email}
 					</div>	
 				</div>
+
 				<div className="p-4 bg-blue-900 rounded-b-md">
 						<h1 className='text-2xl font-bold'>Hello {currentUser.username} - See your posts and edit your account!</h1>
 						
