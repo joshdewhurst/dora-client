@@ -59,13 +59,6 @@ We will using the [last.fm API](https://www.last.fm/api) at the moment.
 | GET | /:userId/profile/edit | Read | Takes the user to their edit user page |
 | PUT | /:userId/profile | Update | Posts the updated user info and sends user to profile |
 
-## Music Routes
-| VERB | URL | Action | Notes |
-|:----:| :---: | :-------: | :-----:|
-| GET | /trending | Read | Renders the trending music page |
-| GET | /song/:id | Read | Get info on a certain song |
-| GET | /album/:id | Read | Get info on a certain album |
-
 ## Posts Routes
 
 | VERB  | URL   | Action    | Notes |
@@ -78,9 +71,7 @@ We will using the [last.fm API](https://www.last.fm/api) at the moment.
 | PUT | /post/:id | Update | Update a post’s information |
 | DELETE | /post/:id | Destroy | Delete a post |
 
-
-
-
+---
 
 # Wireframes of All User Views
 Homepage
@@ -110,21 +101,29 @@ Song/Album Info
 *	as a user I want to be able to see a trending page with all of the trending songs and albums
 * 	as a user I want to be able to interact with other peoples posts 
 * 	as a user I want to be able to search a song or album and have the information displayed to me
+
+---
+## Our Approach Used
+
+As a group, we wanted to create something that we felt passionate and excited about. After discussing and brainstorming we came back to music and decided to create a social media app where users can engage with their friends by posting songs, music, and engaging with others. We utalized Miro primarlily to communicate and plan out our project. We had a brainstorming table, a bug board, a weekly tracker of what we did everyday, and visual representations of our app. We didn't have any merge or Github issues, primarliy because our group was exceptional with communication on what files were being worked on and when a pull request was made, it was quickly merged and pulled down.
+
+We also utalized discord as a way to work outside of class and share code snippets, share screens, and just aid in communication. Our focus was in helping each other and filling in each other's weaknesses to be a better team and create something visually appealing and useful.
+
+---
+
 # MVP Goals/Stretch Goals
 
 ### MVP
-- user is able to post a song/album
-- a feed that shows what songs/albums other user's have posted
-- a trending page with trending songs and albums
-- search function for songs and albums
-- editing and updating user profile
-- 
-
+* [X] user is able to post a song/album
+* [X] a feed that shows what songs/albums other user's have posted
+* [X] a trending page with trending songs and albums
+* [X] search function for songs and albums
+* [X] editing and updating user profile
 
 
 ### Stretch Goals
 
-- allow users to play a song/album embedded on the site
-- users are able to react to other's people's posts
-- logo for our app
-- delete profile
+* [] allow users to play a song/album embedded on the site
+* [] users are able to react to other's people's posts
+* [X] logo for our app
+* []delete profile
