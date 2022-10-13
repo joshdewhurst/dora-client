@@ -27,7 +27,6 @@ const appReducer = (state, action) => {
   }
 
 export default function Home (props) {
-    
     const [posts, setPosts] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
     const [users, setUsers] = useState([])
@@ -183,9 +182,6 @@ export default function Home (props) {
         <div className="bg-blue-100">
             <h2 className="bg-blue-300 p-8 mt-4rounded-md flex flex-col text-6xl w-1/2 mx-auto">explorin'</h2>
             <p>{allPosts}</p>
-
-           
-
         </div>
     )
 }

@@ -80,6 +80,7 @@ useEffect(() => {
 				<div className='flex w-1/2 text-3xl font-bold flex-col p-2'>
 					<h3 className='w-fit drop-shadow-lg'>{currentUser.username}</h3>
 				</div>
+				<img src='https://i.postimg.cc/CLkCtXfb/My-project-1.png' />
 			<div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-white  font-bold p-2">
 				<div className='flex w-1/2 flex-col p-2'>
 					<p className="mb-2 border-b-4 border-green-400">Name</p>
