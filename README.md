@@ -1,11 +1,27 @@
-# d'ora Client
-
-# Project Idea and Descriptions:
+# d'ora
 d'ora is a music social media app that allows you to share albums and songs, along with a rating or blurb about each.  Along with sharing your own music, you will be able to see and react to what other users are sharing as well!  Curious as to what music is popular?  You can see what songs and albums are trending.  Can't remember what song you're thinking of?  Use our search function to help narrow it down!  
+---
+#Instalation Instructions
+###
+**Client Installation Instructions**
+1. Fork on GitHub and clone down this repository
+2.  Run `npm install` to ensure dependancies are installed
+3.  Touch a `.env.local` file
+4. add `REACT_APP_SERVER_URL=http://localhost:3001` to `.env.local`
+5. In your terminal, run the command `npm run start` to start the client
+6. Navigate to http://localhost:3000/ to interact with the web app
+
+**Server Installation Instructions**
+1. Fork on [d'ora Server repository](https://github.com/tylerchan33/dora-server)GitHub and clone it down
+2. Run `npm install` to ensure dependancies are installed
+3. Touch a `.env` file 
+4. add `JWT_SECRET="[SECRET_KEY_HERE]"` in the `.env`
+5. Run `nodemon` to start server
+---
 
 # API
 
-We will using the [last.fm API](www.last.fm/api) at the moment.
+We will using the [last.fm API](https://www.last.fm/api) at the moment.
 
 # ERDs
 
