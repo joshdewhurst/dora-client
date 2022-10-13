@@ -34,7 +34,7 @@ export default function Posts (props) {
         const getPosts = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`, options)
-                console.log(response.data)
+                // console.log(response.data)
                 setPosts(response.data)
             } catch (err) {
                 console.warn(err)
@@ -102,7 +102,7 @@ export default function Posts (props) {
     return (
         <div class="bg-blue-100 h-screen">
             <h1 className="p-12 font-bold text-7xl mx-auto">Your Posts</h1>
-          {userPosts}
+          <div className="bg-blue-100 h-screen">{userPosts}</div>
         </div>
     )
 }

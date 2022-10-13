@@ -19,7 +19,7 @@ export default function EditProfile(props) {
         const getUser = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${userId}`, options)
-                console.log(response.data)
+                // console.log(response.data)
             } catch(err) {
                 console.warn(err) 
                     if(err.response) {
@@ -50,7 +50,7 @@ export default function EditProfile(props) {
             }
             const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/profile/${userId}/edit`, reqBody, options)
             const { token }  = response.data
-            console.log("token", token )
+            // console.log("token", token )
             localStorage.setItem("jwt", token)
             const decoded = jwt_decode(token)
             props.setCurrentUser(decoded)

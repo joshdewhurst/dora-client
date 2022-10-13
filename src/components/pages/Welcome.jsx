@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 
 export default function Welcome(props) {
 	const [errorMessage, setErrorMessage] = useState("")
-	console.log(window.performance.navigation);//PerformanceNavigation {type: 1, redirectCount: 0}
-    console.log(window.performance.getEntriesByType("navigation")[0]); //
 
 	// clears state so that search results are cleared when you navigate to different pages on the navbar
 	// useEffect(() => {

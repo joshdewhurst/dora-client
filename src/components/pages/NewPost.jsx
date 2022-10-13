@@ -63,7 +63,7 @@ export default function NewPost (props) {
         try {
             e.preventDefault()
             await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/new`, form, options)
-            console.log("posted")
+            // console.log("posted")
             navigate("/home")
         } catch(err) {
         console.warn(err)

@@ -63,7 +63,7 @@ useEffect(() => {
 	const getPosts = async () => {
 		try {
 			const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`, options)
-			console.log(response.data)
+			// console.log(response.data)
 			setPosts(response.data)
 		} catch (err) {
 			console.warn(err)

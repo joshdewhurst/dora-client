@@ -23,7 +23,7 @@ export default function Media (props) {
                 const singerResp = await axios.get(artistSearchUrl)
                 const imageResp = await axios.get(image)
                 const song = await axios.get(image)
-                console.log("test", song.data.track)
+                // console.log("test", song.data.track)
                 // console.log(mediaResp)
                 // console.log(singerResp)
                 setSinger(singerResp.data.results.artistmatches.artist[0])

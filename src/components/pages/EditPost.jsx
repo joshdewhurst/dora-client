@@ -13,7 +13,7 @@ export default function EditPost (props) {
         const getPost = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`, options)
-                console.log(response.data)
+                // console.log(response.data)
                 setForm(response.data)
             } catch(err) {
             console.warn(err)

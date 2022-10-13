@@ -36,7 +36,7 @@ export default function Post (props) {
         const getPost = async () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/${id}`, options)
-                console.log("RESPONSEDATA", response.data)
+                // console.log("RESPONSEDATA", response.data)
                 setPost(response.data)
             } catch (err) {
                 console.warn(err)

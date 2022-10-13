@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Search (props) {
-    console.log(window.performance.navigation);//PerformanceNavigation {type: 1, redirectCount: 0}
-    console.log(window.performance.getEntriesByType("navigation")[0].type); //
     // const [state, setState] = useState({})
     // const [errorMessage, setErrorMessage] = useState('')
     const [searchType, setSearchType] = useState('song')
@@ -27,7 +25,7 @@ export default function Search (props) {
 
    
     const trackList = props.apiResponse.map((track, i) => {
-        console.log( {track})
+        // console.log( {track})
         return (
             <div key={`track${i}`} className="my-4 flex p-4 w-1/3 mx-auto bg-blue-100">
                 <div className='w-full bg-blue-900 p-8 rounded-3xl'>
