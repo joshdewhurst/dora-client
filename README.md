@@ -110,6 +110,12 @@ As a group, we wanted to create something that we felt passionate and excited ab
 We also utalized discord as a way to work outside of class and share code snippets, share screens, and just aid in communication. Our focus was in helping each other and filling in each other's weaknesses to be a better team and create something visually appealing and useful.
 
 ---
+## Unsolved Problems
+1. We wanted to implament reactions on each post so that other users could add a "like/dislike/etc" to a post. We ran out of time and weren't able to get this fully working.
+2. We were unable to integrate local storage into our app.
+3. In `/post/new` we wanted to add a search song input that searches the api and autofills the blank form, but ran out of time.
+
+Group wise, we didn't have too many major hurdles. We worked well, communicated well, and we think the unsolved problems could have been solved with another day or two or work.
 
 # MVP Goals/Stretch Goals
 
@@ -126,4 +132,4 @@ We also utalized discord as a way to work outside of class and share code snippe
 * [ ] allow users to play a song/album embedded on the site
 * [ ] users are able to react to other's people's posts
 * [X] logo for our app
-* [ ]delete profile
+* [ ] delete profile
