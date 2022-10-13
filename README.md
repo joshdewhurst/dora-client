@@ -123,7 +123,7 @@ We also utalized discord as a way to work outside of class and share code snippe
 
 ### Stretch Goals
 
-* [] allow users to play a song/album embedded on the site
-* [] users are able to react to other's people's posts
+* [ ] allow users to play a song/album embedded on the site
+* [ ] users are able to react to other's people's posts
 * [X] logo for our app
-* []delete profile
+* [ ]delete profile
