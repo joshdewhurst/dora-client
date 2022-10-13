@@ -100,8 +100,8 @@ export default function Posts (props) {
 
    
     return (
-        <div class="bg-blue-100">
-            <h1 className="p-12 text-2xl mx-auto">Your Posts</h1>
+        <div class="bg-blue-100 h-screen">
+            <h1 className="p-12 font-bold text-7xl mx-auto">Your Posts</h1>
           {userPosts}
         </div>
     )

@@ -48,12 +48,16 @@ export default function Media (props) {
     const artistListens = artistParse.toLocaleString("en-US")
 
     return (
-        <div className="bg-red-200 p-12 rounded-3xl mb-5 flex flex-col text-white text-2xl">
+        <div className="bg-blue-100 h-screen">
+            <br></br>
+            <div className="bg-red-200 m-12 rounded-3xl mb-5 flex flex-col text-white text-2xl">
+            <br></br>
             <div>
-                <p className="text-6xl">Song Info</p>
-                <p>{media.name}</p>
-                <p>{media.artist}</p>
-                <p>Song Listens: {songListens}</p>
+                <p className="text-6xl text-black font-bold">Song Info</p>
+                <p className="font-bold text-emerald-600">{media.name}</p>
+                <p className="font-bold text-emerald-600">x</p>
+                <p className="font-bold text-emerald-600">{media.artist}</p>
+                <p className="font-bold text-emerald-600">Song Listens: {songListens}</p>
                 {/* maybe we'll add this later but the text is kinda messed up */}
                 {/* <p>{song.wiki.content}</p> */}
                 
@@ -61,9 +65,9 @@ export default function Media (props) {
             </div>
             <br></br>
             <div>
-                <p className="text-6xl">Singer Info</p>
-                <p>{singer.name}</p>
-                <p>Artist Listens: {artistListens}</p>
+                <p className="text-6xl text-black font-bold">Singer Info</p>
+                <p className="font-bold text-emerald-600">{singer.name}</p>
+                <p className="font-bold text-emerald-600">Artist Listens: {artistListens}</p>
             </div>
             {/* conditional rendering because not all of the songs have pictures */}
             {image ? 
@@ -73,7 +77,8 @@ export default function Media (props) {
                 <div> 
                 </div>
             }
-            
+            <br></br>
+            </div>
         </div>
     )
 }
