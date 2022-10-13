@@ -29,7 +29,7 @@ d'ora is a music social media app that allows you to share albums and songs, alo
 - Bcrypt for Node.js
 - React
 
-d'ora is a `react` based Node.js application. The backend of our project `dora Server` uses Express.js along with a noSQL database called `mongoDB'. `dora Client` uses `axios` to connect with an API and gather information on songs and artist, which the user can interact with. Javascript is used throughout server and client sides. EJS (Embedded JavaScript Templating) and Tailwind are both used to design the interface that the user inteacts with. JWT(JSON Web Token) is used to protect a users data and authenticate them. 
+d'ora is a `react` based Node.js application. The backend of our project `dora Server` uses Express.js along with a noSQL database called `mongoDB`. `dora Client` uses `axios` to connect with an API and gather information on songs and artist, which the user can interact with. Javascript is used throughout server and client sides. EJS (Embedded JavaScript Templating) and Tailwind are both used to design the interface that the user inteacts with. JWT(JSON Web Token) is used to protect a users data and authenticate them. 
 # API
 
 We will using the [last.fm API](https://www.last.fm/api) at the moment.
