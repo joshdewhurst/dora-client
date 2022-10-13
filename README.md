@@ -59,9 +59,9 @@ We will using the [last.fm API](https://www.last.fm/api) at the moment.
 | Method | URL | Action | Description |
 |:-----:|:---:|:------:|:-----------:|
 | GET | / | Read | Takes the user to the homepage (logged in) |
-| GET | /:userId/profile | Read | Takes the user to their user page |
-| GET | /:userId/profile/edit | Read | Takes the user to their edit user page |
-| PUT | /:userId/profile | Update | Posts the updated user info and sends user to profile |
+| GET | /profile/:userId | Read | Takes the user to their user page |
+| GET | /profile/:userId/edit | Read | Takes the user to their edit user page |
+| PUT | /profile/:userId | Update | Posts the updated user info and sends user to profile |
 
 ## Posts Routes
 
