@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Search (props) {
-    console.log(window.performance.navigation);//PerformanceNavigation {type: 1, redirectCount: 0}
-    console.log(window.performance.getEntriesByType("navigation")[0].type); //
     // const [state, setState] = useState({})
     // const [errorMessage, setErrorMessage] = useState('')
     const [searchType, setSearchType] = useState('song')
@@ -27,13 +25,13 @@ export default function Search (props) {
 
    
     const trackList = props.apiResponse.map((track, i) => {
-        console.log( {track})
+        // console.log( {track})
         return (
             <div key={`track${i}`} className="my-4 flex p-4 w-1/3 mx-auto bg-blue-100">
                 <div className='w-full bg-blue-900 p-8 rounded-3xl'>
                     <div className=' text-white text-left font-bold'>
-                        <h1 className='uppercase'>{track.name}</h1>
-                        <h2>Artist: {track.artist}</h2>
+                        <h1 className='uppercase text-3xl text-center'>{track.name}</h1>
+                        <h2 className='text-2xl text-center'>Artist: {track.artist}</h2>
                     </div>
                     <div className='bg-blue-600 w-fit mx-auto p-2 rounded-md font-bold my-2 text-white'>
                         <Link to="/post/new/track"><button onClick={() => props.setTrack({ track })}>POST SONG</button></Link>
@@ -50,7 +48,7 @@ export default function Search (props) {
         return (
             <div key={`artist${i}`} className="my-4 flex p-4 w-1/3 mx-auto">
                 <div className=' text-white text-left font-bold w-full bg-blue-900 p-8 rounded-3xl'>
-                    <h1>{artist.name}</h1>
+                    <h1 className="text-center text-3xl">{artist.name}</h1>
                     <div className='bg-blue-600 w-fit mx-auto p-2 rounded-md font-bold my-2 text-white'>
                         <Link to="/post/new/artist"><button onClick={() => props.setArtist({artist})}>POST ARTIST</button></Link>
                         
@@ -101,7 +99,10 @@ export default function Search (props) {
                     <button className='ml-2 p-3 bg-blue-600 rounded-md' type='submit'>SEARCH</button>
                 </form>
             </div>
+            <div className="bg-blue-100">
                 {searchType==='song'? trackList : artistList }
+            </div>
+                
         </div>
     )
 }

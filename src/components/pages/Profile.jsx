@@ -63,7 +63,7 @@ useEffect(() => {
 	const getPosts = async () => {
 		try {
 			const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/post`, options)
-			console.log(response.data)
+			// console.log(response.data)
 			setPosts(response.data)
 		} catch (err) {
 			console.warn(err)
@@ -76,11 +76,10 @@ useEffect(() => {
 }, [])
 
 	return (
-		<div class="bg-blue-100 h-screen">
+		<div className="bg-blue-100 h-screen">
 			
-			<p class="text-blue-100">hello</p>
-			<div class="bg-blue-100 h-screen">
-				<div className="bg-yellow-400 drop-shadow-2xl p-12 rounded-md mt-12 flex flex-col text-white text-2xl w-2/3 mx-auto">
+			<div className="bg-blue-100 p-12">
+				<div className="bg-yellow-400 drop-shadow-2xl p-12 rounded-md  flex flex-col text-white text-2xl w-2/3 mx-auto">
 					<div className='flex w-1/2 text-3xl font-bold flex-col p-2'>
 						<h3 className='w-fit drop-shadow-lg'>@{currentUser.username}</h3>
 					</div>

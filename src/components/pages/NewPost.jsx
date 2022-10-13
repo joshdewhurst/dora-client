@@ -63,7 +63,7 @@ export default function NewPost (props) {
         try {
             e.preventDefault()
             await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/post/new`, form, options)
-            console.log("posted")
+            // console.log("posted")
             navigate("/home")
         } catch(err) {
         console.warn(err)
@@ -77,7 +77,7 @@ export default function NewPost (props) {
             (
             <form onSubmit={handleSubmit}>
                 <div >
-                    <label htmlFor="songTitle">Song Title:</label>
+                    <label htmlFor="songTitle" className="text-2xl font-bold">Song Title:</label>
                     <input type="text" 
                         id="songTitle" 
                         value={`${type === 'track'? form.title : null}`} 
@@ -85,7 +85,7 @@ export default function NewPost (props) {
                         className='formInputs'>
                     </input>
                     <br></br>
-                    <label htmlFor="songArtist">Artist:</label>
+                    <label htmlFor="songArtist" className="text-2xl font-bold">Artist:</label>
                     <input type="text" 
                         id="songArtist" 
                         value={`${type === 'track'? form.artist : null}`} 
@@ -93,7 +93,7 @@ export default function NewPost (props) {
                         className="formInputs">
                     </input>
                     <br></br>
-                    <label htmlFor="songRating">Rating:</label>
+                    <label htmlFor="songRating" className="text-2xl font-bold">Rating:</label>
                     <input type="number" 
                         id="songRating" 
                         min="0" 
@@ -103,7 +103,7 @@ export default function NewPost (props) {
                         className="formInputs">
                     </input>
                     <br></br>
-                    <label htmlFor="songBlurb">Blurb:</label>
+                    <label htmlFor="songBlurb" className="text-2xl font-bold">Blurb:</label>
                     <textarea 
                     type='text' 
                     name="blurb" 
@@ -124,21 +124,21 @@ export default function NewPost (props) {
             (
             <form onSubmit={handleSubmit}>
                 <div >
-                    <label htmlFor="songTitle">Song Title:</label>
+                    <label htmlFor="songTitle" className="text-2xl font-bold">Song Title:</label>
                     <input type="text" 
                         id="songTitle"  
                         className='formInputs'
                         onChange={(e) => setForm({...form, title: e.target.value})}
                     />
                     <br></br>
-                    <label htmlFor="songArtist">Artist:</label>
+                    <label htmlFor="songArtist" className="text-2xl font-bold">Artist:</label>
                     <input type="text" 
                         id="songArtist" 
                         className="formInputs"
                         onChange={(e) => setForm({...form, artist: e.target.value})}
                     />
                     <br></br>
-                    <label htmlFor="songRating">Rating:</label>
+                    <label htmlFor="songRating" className="text-2xl font-bold">Rating:</label>
                     <input type="number" 
                         id="songRating" 
                         min="0" 
@@ -148,7 +148,7 @@ export default function NewPost (props) {
                         className="formInputs">
                     </input>
                     <br></br>
-                    <label htmlFor="songBlurb">Blurb:</label>
+                    <label htmlFor="songBlurb" className="text-2xl font-bold">Blurb:</label>
                     <textarea 
                     type='text' 
                     name="blurb" 
@@ -168,14 +168,14 @@ export default function NewPost (props) {
     const albumForm = (
             <form onSubmit={handleSubmit}>
             <div >
-                <label htmlFor="songArtist">Artist:</label>
+                <label htmlFor="songArtist" className="text-2xl font-bold">Artist:</label>
                 <input type="text" 
                     id="songArtist" 
                     value={`${type === 'artist'? form.artist : ''}`} 
                     className="formInputs">
                 </input>
                 <br></br>
-                <label htmlFor="songRating">Rating:</label>
+                <label htmlFor="songRating" className="text-2xl font-bold">Rating:</label>
                 <input type="number" 
                     id="songRating" 
                     min="0" 
@@ -185,7 +185,7 @@ export default function NewPost (props) {
                     className="formInputs">
                 </input>
                 <br></br>
-                <label htmlFor="songBlurb">Blurb:</label>
+                <label htmlFor="songBlurb" className="text-2xl font-bold">Blurb:</label>
                 <textarea 
                 type='text' 
                 name="blurb" 

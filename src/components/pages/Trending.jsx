@@ -104,9 +104,9 @@ export default function Trending(props) {
         // </div>
 
        <div className="bg-blue-100">
-        <h1 className="text-5xl font-bold p-5">Top 50 Trending Songs</h1>
+        <h1 className="text-6xl text-blue-700 font-bold p-5">Top 50 Trending Songs</h1>
         <div class="container justify-center mx-auto">
-            <div class="flex flex-col bg-blue-700 p-10 w-3/4 mx-auto rounded-md">
+            <div class="flex flex-col bg-blue-700 p-10 w-3/5 mx-auto rounded-md">
                 <table className="bg-blue-700 p-12 mb-5 text-white text-2xl  mx-auto">
                     <thead class="bg-blue-400">
                         <tr class="border">
@@ -123,7 +123,7 @@ export default function Trending(props) {
                                     <td class="border text-black font-bold">{i+1}</td>
                                     <td class="border text-black font-bold">{track.name}</td>
                                     <td class="border text-black font-bold">{track.artist.name}</td>
-                                    <td class="border text-blue-50 font-bold"><Link className="text-sm text-blue-900" to={`../media/${track.name}/${track.artist.name}`}>Details</Link></td>
+                                    <td class="border font-bold"><Link className="text-base text-blue-900" to={`../media/${track.name}/${track.artist.name}`}>Details</Link></td>
                                 </tr>
                             )}
                         )}  

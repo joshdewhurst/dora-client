@@ -55,7 +55,7 @@ export default function Home (props) {
                 setPosts(response.data)
                 // console.log(posts)
                 const userTest = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users`, options)
-                console.log(userTest.data)
+                // console.log(userTest.data)
                 setUsers(userTest.data)
 
             } catch (err) {
@@ -180,7 +180,7 @@ export default function Home (props) {
     
     return (
         <div className="bg-blue-100">
-            <h2 className="bg-blue-300 p-8 mt-4rounded-md flex flex-col text-6xl w-1/2 mx-auto">explorin'</h2>
+            <h2 className="bg-blue-300 p-8 mt-4rounded-md font-bold text-blue-600 flex flex-col text-7xl mx-auto">explorin'</h2>
             <p>{allPosts}</p>
 
            
