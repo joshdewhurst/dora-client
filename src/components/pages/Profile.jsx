@@ -82,7 +82,7 @@ useEffect(() => {
 			<div class="bg-blue-100 h-screen">
 				<div className="bg-yellow-400 drop-shadow-2xl p-12 rounded-md mt-12 flex flex-col text-white text-2xl w-2/3 mx-auto">
 					<div className='flex w-1/2 text-3xl font-bold flex-col p-2'>
-						<h3 className='w-fit drop-shadow-lg'>{currentUser.username}</h3>
+						<h3 className='w-fit drop-shadow-lg'>@{currentUser.username}</h3>
 					</div>
 				<div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-white  font-bold p-2">
 					<div className='flex w-1/2 flex-col p-2'>
