@@ -69,7 +69,7 @@ export default function Post (props) {
         <div class="bg-blue-100 h-screen">
             <br></br>
             <div className="flex ml-80 text-2xl">
-                <Link to={`/posts`} className="underline hover:no-underline
+                <Link to={`/home`} className="underline hover:no-underline
                    text-blue-600 hover:text-blue-800 
                    visited:text-purple-600">
                     Home Feed
