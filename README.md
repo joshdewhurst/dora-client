@@ -1,5 +1,7 @@
 # d'ora 
 
+![Join d'ora today!](https://doramusica.netlify.app/home)
+
 d'ora is a music social media app that allows you to share albums and songs, along with a rating or blurb about each.  Along with sharing your own music, you will be able to see and react to what other users are sharing as well!  Curious as to what music is popular?  You can see what songs and albums are trending.  Can't remember what song you're thinking of?  Use our search function to help narrow it down! 
 ![d'ora app main feed](https://i.postimg.cc/VvJ0KFbs/d-ora-Screenshot-of-home-Feed.png)
 
@@ -22,6 +24,13 @@ d'ora is a music social media app that allows you to share albums and songs, alo
 3. Touch a `.env` file 
 4. add `JWT_SECRET="[SECRET_KEY_HERE]"` in the `.env`
 5. Run `nodemon` to start server
+---
+**Last.fm API Key**
+1. Go to the [Last.fm API](https://www.last.fm/api) site and make a Last.fm account to get an API key.
+2. Fill out the application and you'll get an API key!
+3. In the `.env.local` file, add `REACT_APP_API_KEY=[YOUR_API_KEY_HERE]` (make sure there are no spaces).
+4. You should be good to go!
+
 ---
 ## Tech Stack Used
 - JavaScript
