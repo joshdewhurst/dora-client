@@ -17,7 +17,7 @@ d'ora is a music social media app that allows you to share albums and songs, alo
 6. Navigate to http://localhost:3000/ to interact with the web app
 
 **Server Installation Instructions**
-1. Fork on [d'ora Server repository](https://github.com/tylerchan33/dora-server)GitHub and clone it down
+1. Fork our [d'ora Server repository](https://github.com/tylerchan33/dora-server) on GitHub and clone it down
 2. Run `npm install` to ensure dependancies are installed
 3. Touch a `.env` file 
 4. add `JWT_SECRET="[SECRET_KEY_HERE]"` in the `.env`
