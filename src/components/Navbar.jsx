@@ -1,10 +1,11 @@
 import userEvent from '@testing-library/user-event'
 import PreviousMap from 'postcss/lib/previous-map'
 import { Link, BrowserRouter } from 'react-router-dom'
+import doralogo from "../dora-logo.png"
 
 export default function Navbar({ currentUser, handleLogout }) {
 	 const loggedIn = (
-		<div className='mx-auto w-3/4 inline-block flex-nowrap text-lg uppercase'>
+		<div className='mx-auto w-3/4 inline-block flex-nowrap text-lg uppercase mt-7'>
 			<Link to='/home'>Feed</Link> { " | "}
 			<Link to='/post/new/direct'>New Post</Link> { " | "}
 			<Link to='/trending'>Trending</Link> { " | "}
@@ -31,8 +32,9 @@ export default function Navbar({ currentUser, handleLogout }) {
 
 	return (
 		<nav className='bg-blue-600'>
-			<div className='mx-auto text-4xl w-fit  whitespace-nowrap font-bold p-5 text-white'>
-				<Link className='inline-block mr-12' to="/">
+			<div className='mx-auto text-4xl w-fit  whitespace-nowrap font-bold p-5 text-white flex flex-row'>
+				<img className="h-20 w-20 "src={doralogo} alt="d'ora logo" />
+				<Link className='inline-block mr-12 mt-3' to="/">
 					<p className='text-5xl'>d'ora</p>
 				</Link>
 				{currentUser ? loggedIn : loggedOut}

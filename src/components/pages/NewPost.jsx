@@ -35,14 +35,18 @@ export default function NewPost (props) {
     
 
     useEffect(()=> {
-        if(type === 'track') {
-            setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id, username: props.currentUser.username }) 
-        }
-        if(type === 'artist') {
-            setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id, username: props.currentUser.username})
-        }
-        if(type === 'direct') {
-            setForm({user: props.currentUser.id, username: props.currentUser.username})
+        try {
+            if(type === 'track') {
+                setForm({title: props.track.track.name, artist: props.track.track.artist, user: props.currentUser.id, username: props.currentUser.username }) 
+            }
+            if(type === 'artist') {
+                setForm({title: null, artist: props.artist.artist.name, user: props.currentUser.id, username: props.currentUser.username})
+            }
+            if(type === 'direct') {
+                setForm({user: props.currentUser.id, username: props.currentUser.username})
+            }
+        } catch (err) {
+            console.warn(err)
         }
         
     },[props.setArtist, props.setTrack])
@@ -76,16 +80,16 @@ export default function NewPost (props) {
                     <label htmlFor="songTitle">Song Title:</label>
                     <input type="text" 
                         id="songTitle" 
-                        readOnly
-                        value={`${type === 'track'? props.track.track.name : null}`} 
+                        value={`${type === 'track'? form.title : null}`} 
+                        onChange={(e) => setForm({...form, title: e.target.value})}
                         className='formInputs'>
                     </input>
                     <br></br>
                     <label htmlFor="songArtist">Artist:</label>
                     <input type="text" 
                         id="songArtist" 
-                        readOnly
-                        value={`${type === 'track'? props.track.track.artist : null}`} 
+                        value={`${type === 'track'? form.artist : null}`} 
+                        onChange={(e) => setForm({...form, artist: e.target.value})}
                         className="formInputs">
                     </input>
                     <br></br>
@@ -167,7 +171,7 @@ export default function NewPost (props) {
                 <label htmlFor="songArtist">Artist:</label>
                 <input type="text" 
                     id="songArtist" 
-                    value={`${type === 'artist'? props.artist.artist.name : ''}`} 
+                    value={`${type === 'artist'? form.artist : ''}`} 
                     className="formInputs">
                 </input>
                 <br></br>
@@ -202,9 +206,12 @@ export default function NewPost (props) {
 
      
     return (
-       
-        <div className="flex-col w-1/2 mx-auto">
-            {type === 'track'? trackForm : type === 'artist'? albumForm : blankForm}
+        <div class="bg-blue-100 h-screen">
+
+            <div className="flex-col w-1/2 mx-auto">
+                {type === 'track'? trackForm : type === 'artist'? albumForm : blankForm}
+            </div>
+    
         </div>
         
     )

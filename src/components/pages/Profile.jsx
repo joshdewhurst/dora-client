@@ -76,31 +76,37 @@ useEffect(() => {
 }, [])
 
 	return (
-		<div className="bg-yellow-400 drop-shadow-2xl p-12 rounded-md mt-12 flex flex-col text-white text-2xl w-2/3 mx-auto">
-				<div className='flex w-1/2 text-3xl font-bold flex-col p-2'>
-					<h3 className='w-fit drop-shadow-lg'>{currentUser.username}</h3>
+		<div class="bg-blue-100 h-screen">
+			
+			<p class="text-blue-100">hello</p>
+			<div class="bg-blue-100 h-screen">
+				<div className="bg-yellow-400 drop-shadow-2xl p-12 rounded-md mt-12 flex flex-col text-white text-2xl w-2/3 mx-auto">
+					<div className='flex w-1/2 text-3xl font-bold flex-col p-2'>
+						<h3 className='w-fit drop-shadow-lg'>@{currentUser.username}</h3>
+					</div>
+				<div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-white  font-bold p-2">
+					<div className='flex w-1/2 flex-col p-2'>
+						<p className="mb-2 border-b-4 border-green-400">Name</p>
+						{currentUser.name}
+					</div>
+					<div className='flex w-1/2 flex-col p-2'>
+						<p className="mb-2 border-b-4 border-yellow-400">Email</p>
+						{currentUser.email}
+					</div>	
 				</div>
-				<img src='https://i.postimg.cc/CLkCtXfb/My-project-1.png' />
-			<div className="flex flex-row justify-around uppercase rounded-t-md text-black bg-white  font-bold p-2">
-				<div className='flex w-1/2 flex-col p-2'>
-					<p className="mb-2 border-b-4 border-green-400">Name</p>
-					{currentUser.name}
-				</div>
-				<div className='flex w-1/2 flex-col p-2'>
-					<p className="mb-2 border-b-4 border-yellow-400">Email</p>
-					{currentUser.email}
-				</div>	
-			</div>
-			<div className="p-4 bg-blue-900 rounded-b-md">
-					<h1 className='text-2xl font-bold'>Profile - See your posts and edit your account!</h1>
-					<p>{msg}</p>
-					
-				</div>
-				<div className='mt-8 flex justify-between w-1/2 mx-auto'>
-					<Link to={`/profile/${currentUser.id}/edit`}><button className="bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Edit Profile</button></Link>
-					<Link to={"/posts"}><button className="bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Your Posts</button></Link>
 
+				<div className="p-4 bg-blue-900 rounded-b-md">
+						<h1 className='text-2xl font-bold'>Hello {currentUser.username} - See your posts and edit your account!</h1>
+						
+						
+					</div>
+					<div className='mt-8 flex justify-between w-1/2 mx-auto'>
+						<Link to={`/profile/${currentUser.id}/edit`}><button className="mr-2 bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Edit Profile</button></Link>
+						<Link to={"/posts"}><button className=" ml-2 bg-blue-800 hover:bg-white hover:text-yellow-500 rounded-md p-2 font-bold">Your Posts</button></Link>
+
+					</div>
 				</div>
+			</div>
 		</div>
 	)
 }
