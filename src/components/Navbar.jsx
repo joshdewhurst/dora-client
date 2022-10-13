@@ -17,7 +17,7 @@ export default function Navbar({ currentUser, handleLogout }) {
 	 )
 
 	 const loggedOut = (
-		<div className='mx-auto w-fit inline-block'>
+		<div className='mx-auto w-fit inline-block mt-4'>
 			
 			{/* if the user is not logged in... */}
 			<Link to="/register">

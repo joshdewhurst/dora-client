@@ -101,7 +101,10 @@ export default function Search (props) {
                     <button className='ml-2 p-3 bg-blue-600 rounded-md' type='submit'>SEARCH</button>
                 </form>
             </div>
+            <div className="bg-blue-100">
                 {searchType==='song'? trackList : artistList }
+            </div>
+                
         </div>
     )
 }

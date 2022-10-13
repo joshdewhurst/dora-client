@@ -21,9 +21,9 @@ export default function Welcome(props) {
     //     }
     // }, [])
 	return (
-		<div className="text-3xl font-bold bg-slate-800">
+		<div className="text-5xl font-bold bg-slate-800">
             <div className="p-5 text-white">
-			    <h1>d'ora, the future of Musical Social Media.</h1>
+			    <h1>d'ora, go exploring for music</h1>
 
             </div>
             <div className="flex flex-row  text-white uppercase h-[calc(100vh-10.3rem)] ">
@@ -38,9 +38,9 @@ export default function Welcome(props) {
                     <h2 className="text-7xl drop-shadow-2xl" >you</h2>
                 </div>
                 <div className="bg-gradient-to-r from-blue-700 to-blue-600 flex flex-col justify-around w-1/3">
-                    <h2 className="text-7xl drop-shadow-2xl opacity-70" >Go</h2>
-                    <h2 className="text-7xl drop-shadow-2xl text-red-400 opacity-70 hover:opacity-100" >exploring</h2>
-                    <h2 className="text-7xl drop-shadow-2xl opacity-70" >for music</h2>
+                    <h2 className="text-7xl drop-shadow-2xl opacity-70" >What</h2>
+                    <h2 className="text-7xl drop-shadow-2xl text-red-400 opacity-70 hover:opacity-100" >moves</h2>
+                    <h2 className="text-7xl drop-shadow-2xl opacity-70" >You</h2>
                 </div>
             </div>
 		</div>
